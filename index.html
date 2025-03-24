@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pluralty - Soluciones en Cloud, Desarrollo y Data Analytics</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/webp" href="images/isologo-violeta.webp">
+</head>
+<body>
+    <header id="header">
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <a href="#hero">
+                        <img src="images/isologotipo-violeta.webp" alt="Pluralty Logo" class="desktop-logo">
+                        <img src="images/isologo-violeta.webp" alt="Pluralty Logo" class="mobile-logo">
+                    </a>
+                </div>
+                <div class="menu-toggle" id="menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <ul class="nav-menu" id="nav-menu">
+                    <li><a href="#hero">Inicio</a></li>
+                    <li><a href="#services">Servicios</a></li>
+                    <li><a href="#about">Nosotros</a></li>
+                    <li><a href="#contact">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Transformamos tu negocio con tecnología de vanguardia</h1>
+                    <p>Expertos en Cloud Computing, Desarrollo de Software y Data Analytics</p>
+                    <a href="#contact" class="btn btn-primary">Contáctanos</a>
+                </div>
+                <div class="hero-image">
+                    <img src="images/isologotipo-blanco.webp" alt="Pluralty" class="hero-logo">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services">
+        <div class="container">
+            <div class="section-header">
+                <h2>Nuestros Servicios</h2>
+                <p>Soluciones integrales para potenciar tu empresa</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-cloud"></i>
+                    </div>
+                    <h3>Cloud Computing</h3>
+                    <ul>
+                        <li>Migración a la nube</li>
+                        <li>Observabilidad</li>
+                        <li>Contenedores y Kubernetes</li>
+                        <li>AWS y Azure</li>
+                        <li>EKS y AKS</li>
+                        <li>Terraform</li>
+                        <li>Pipelines CI/CD</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>Desarrollo de Software</h3>
+                    <ul>
+                        <li>Backend</li>
+                        <li>Frontend</li>
+                        <li>Aplicaciones móviles</li>
+                        <li>Arquitectura de software</li>
+                        <li>Desarrollo ágil</li>
+                        <li>Integración continua</li>
+                        <li>Testing automatizado</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <h3>Data Analytics</h3>
+                    <ul>
+                        <li>Big Data</li>
+                        <li>Business Intelligence</li>
+                        <li>Data Warehousing</li>
+                        <li>ETL y procesamiento</li>
+                        <li>Visualización de datos</li>
+                        <li>Machine Learning</li>
+                        <li>Análisis predictivo</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="container">
+            <div class="section-header">
+                <h2>Sobre Pluralty</h2>
+                <p>Innovación y excelencia tecnológica</p>
+            </div>
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="images/isologo-violeta.webp" alt="Pluralty Logo" class="about-logo">
+                </div>
+                <div class="about-text">
+                    <p>En Pluralty, nos dedicamos a proporcionar soluciones tecnológicas de vanguardia que impulsan la transformación digital de nuestros clientes.</p>
+                    <p>Nuestro equipo de expertos combina conocimientos técnicos avanzados con una profunda comprensión de los desafíos empresariales para ofrecer resultados excepcionales.</p>
+                    <p>Nos enorgullece nuestra capacidad para adaptarnos rápidamente a las nuevas tecnologías y tendencias del mercado, garantizando que nuestros clientes siempre estén a la vanguardia de la innovación.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2>Contacto</h2>
+                <p>Estamos listos para ayudarte</p>
+            </div>
+            <div class="contact-content">
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Nombre</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Asunto</label>
+                            <input type="text" id="subject" name="subject" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Mensaje</label>
+                            <textarea id="message" name="message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Enviar Mensaje</button>
+                    </form>
+                </div>
+                <div class="contact-info">
+                    <div class="info-item">
+                        <i class="fas fa-envelope"></i>
+                        <p>info@pluralty.com</p>
+                    </div>
+                    <!-- <div class="info-item">
+                        <i class="fas fa-phone"></i>
+                        <p>+1 (123) 456-7890</p>
+                    </div> -->
+                    <div class="info-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <p>Buenos Aires, Argentina</p>
+                    </div>
+                    <div class="social-media">
+                        <a href="https://www.linkedin.com/company/pluralty" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <!-- <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+                    <a href="#" target="_blank"><i class="fab fa-github"></i></a> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="images/isologotipo-blanco.webp" alt="Pluralty Logo">
+                </div>
+                <div class="footer-links">
+                    <ul>
+                        <li><a href="#hero">Inicio</a></li>
+                        <li><a href="#services">Servicios</a></li>
+                        <li><a href="#about">Nosotros</a></li>
+                        <li><a href="#contact">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="footer-social">
+                    <a href="https://www.linkedin.com/company/pluralty" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <!-- <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+                    <a href="#" target="_blank"><i class="fab fa-github"></i></a> -->
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Pluralty. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
