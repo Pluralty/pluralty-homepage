@@ -2,10 +2,15 @@
 import '../styles/global.css';
 import { t, clientDicts, DEFAULT_LOCALE } from '../i18n';
 
+interface Props {
+  title?: string;
+  description?: string;
+}
+
 const site = 'https://pluralty.com';
 const canonical = new URL(Astro.url.pathname, site).href;
-const title = t('meta.title');
-const description = t('meta.desc');
+const title = Astro.props.title ?? t('meta.title');
+const description = Astro.props.description ?? t('meta.desc');
 const i18nData = JSON.stringify(clientDicts());
 
 const jsonLd = {

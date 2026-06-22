@@ -3,35 +3,57 @@ import Tr from './Tr.astro';
 import Icon from './Icon.astro';
 
 interface Props {
-  name: string;
-  url: string;
+  name?: string;
+  url?: string;
+  detailUrl?: string;
   display: string;
   id: string;
   stack: string[];
   index: number;
+  logoColor?: string;
+  logoBg?: string;
+  logoText?: string;
 }
-const { name, url, display, id, stack, index } = Astro.props;
+const { name, url, detailUrl, display, id, stack, index, logoColor = 'var(--brand-glow)', logoBg = 'rgba(123,47,181,0.15)', logoText } = Astro.props;
 ---
 
 <article class="case" data-reveal style={`--reveal-delay:${index * 0.06}s`}>
   <div class="connector" aria-hidden="true"></div>
   <div class="body">
-    <div class="meta">
-      <span class="num">{String(index + 1).padStart(2, '0')}</span>
-      <span class="tag"><Tr k={`cases.${id}.tag`} /></span>
+    <div class="header-row">
+      {logoText && (
+        <div class="logo" style={`--lc:${logoColor};--lb:${logoBg}`}>
+          {logoText}
+        </div>
+      )}
+      <div class="meta">
+        <span class="num">{String(index + 1).padStart(2, '0')}</span>
+        <span class="tag"><Tr k={`cases.${id}.tag`} /></span>
+      </div>
     </div>
     <h3>{display}</h3>
     <p><Tr k={`cases.${id}.desc`} as="span" /></p>
-    <a class="visit" href={url} target="_blank" rel="noopener">
-      <Tr k="cases.visit" /> <span class="dom">{name}</span><Icon name="external" size={16} />
-    </a>
+    <div class="actions">
+      {detailUrl && (
+        <a class="read-more" href={detailUrl}>
+          <Tr k="cases.read" /><Icon name="arrow" size={15} />
+        </a>
+      )}
+      {url && (
+        <a class="visit" href={url} target="_blank" rel="noopener">
+          <span class="dom">{name}</span><Icon name="external" size={14} />
+        </a>
+      )}
+      {!url && !detailUrl && (
+        <span class="no-url"><Tr k="cases.soon" /></span>
+      )}
+    </div>
   </div>
   <div class="stack">
     <span class="stack-label"><Tr k="cases.stack" /></span>
     <ul>
       {stack.map((s) => <li>{s}</li>)}
     </ul>
-    <span class="soon"><Tr k="cases.soon" /></span>
   </div>
 </article>
 
@@ -52,7 +74,6 @@ const { name, url, display, id, stack, index } = Astro.props;
     border-color: var(--line-strong);
     transform: translateY(-3px);
   }
-  /* the "plug" connector echoing the isologo port motif */
   .connector {
     position: absolute;
     left: 0;
@@ -63,11 +84,31 @@ const { name, url, display, id, stack, index } = Astro.props;
     background: linear-gradient(var(--brand-lift), var(--brand));
     border-radius: 0 5px 5px 0;
   }
+  .header-row {
+    display: flex;
+    align-items: center;
+    gap: var(--sp-4);
+    margin-bottom: var(--sp-3);
+  }
+  .logo {
+    flex-shrink: 0;
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    background: var(--lb);
+    border: 1px solid color-mix(in srgb, var(--lc) 35%, transparent);
+    display: grid;
+    place-items: center;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: -0.02em;
+    color: var(--lc);
+  }
   .meta {
     display: flex;
     align-items: center;
     gap: var(--sp-3);
-    margin-bottom: var(--sp-3);
   }
   .num {
     font-family: var(--font-mono);
@@ -88,20 +129,48 @@ const { name, url, display, id, stack, index } = Astro.props;
     color: var(--muted);
     max-width: 52ch;
   }
-  .visit {
+  .actions {
+    display: flex;
+    align-items: center;
+    gap: var(--sp-5);
+    margin-top: var(--sp-4);
+    flex-wrap: wrap;
+  }
+  .read-more {
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    margin-top: var(--sp-4);
     color: var(--paper);
     font-weight: 600;
+    font-size: var(--step-0);
+    background: var(--brand);
+    padding: 8px 16px;
+    border-radius: var(--r-pill);
+    transition: background 0.2s, transform 0.2s;
+  }
+  .read-more:hover {
+    background: var(--brand-lift);
+    transform: translateX(2px);
+  }
+  .visit {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    color: var(--muted);
+    font-size: var(--step--1);
+    font-family: var(--font-mono);
     transition: color 0.2s;
   }
   .visit:hover {
-    color: var(--brand-glow);
+    color: var(--paper);
   }
   .visit .dom {
     color: var(--brand-glow);
+  }
+  .no-url {
+    font-size: var(--step--1);
+    color: var(--muted);
+    font-style: italic;
   }
   .stack {
     border-left: 1px solid var(--line);
@@ -109,6 +178,8 @@ const { name, url, display, id, stack, index } = Astro.props;
     display: flex;
     flex-direction: column;
     gap: var(--sp-3);
+    align-self: start;
+    padding-top: var(--sp-1);
   }
   .stack-label {
     font-family: var(--font-mono);
@@ -130,12 +201,6 @@ const { name, url, display, id, stack, index } = Astro.props;
     border-radius: var(--r-pill);
     color: var(--paper);
     background: rgba(123, 47, 181, 0.08);
-  }
-  .soon {
-    margin-top: auto;
-    font-size: var(--step--1);
-    color: var(--muted);
-    font-style: italic;
   }
 
   @media (max-width: 800px) {

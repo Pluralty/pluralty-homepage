@@ -88,6 +88,12 @@ const en: Record<string, string> = {
   'cases.muchticket.desc':
     'Muchticket sells tickets for events across Latin America and Europe, with virtual queues that hold up when a hundred thousand fans hit "buy" at once. We keep that infrastructure standing through every on-sale.',
 
+  'cases.pgsa.tag': 'Remote workspaces',
+  'cases.pgsa.desc':
+    'PGSA migrated its entire workforce to cloud-hosted workstations using AWS Workspaces, eliminating on-premise desktop infrastructure and enabling secure remote access from any device, anywhere.',
+
+  'cases.read': 'Read case study',
+
   // Partnerships
   'partners.eyebrow': 'Why teams trust us',
   'partners.title': 'Backed by the partnerships that matter',
@@ -155,6 +161,43 @@ const en: Record<string, string> = {
 
   // Language
   'lang.label': 'Language',
+
+  // Case study — Stabled
+  'case.stabled.meta.title': 'Stabled · Fintech-grade cloud infrastructure — Pluralty',
+  'case.stabled.meta.desc':
+    'How Pluralty built production infrastructure for Stabled, a cross-border payments platform using USDC.',
+  'cases.back': '← Back to case studies',
+  'case.stabled.tag': 'Fintech · Cross-border payments',
+  'case.stabled.tagline': 'Moving money across borders in seconds — at a fraction of bank fees.',
+  'case.stabled.challenge.label': 'The challenge',
+  'case.stabled.challenge.title': 'Building payments infrastructure that earns trust',
+  'case.stabled.challenge.p1':
+    'Stabled needed a platform capable of settling cross-border USDC transactions the moment they landed — with the reliability and security posture that a fintech demands. The infrastructure had to be auditable, multi-environment, and built from day one as infrastructure as code.',
+  'case.stabled.challenge.p2':
+    'The team was moving fast, but they needed a foundation that could grow without being rewritten — one that separated concerns at the AWS account level, and gave developers clear deployment paths from every commit.',
+  'case.stabled.solution.label': 'The solution',
+  'case.stabled.solution.title': 'Multi-account architecture for isolation and speed',
+  'case.stabled.solution.p1':
+    'We structured Stabled under AWS Organizations from day one, giving production its own account isolated from staging and tooling. A misconfiguration in a non-prod environment literally cannot reach production — the blast radius is bounded by the account boundary.',
+  'case.stabled.solution.p2':
+    'Application workloads run on ECS Fargate behind an Application Load Balancer, letting the team ship container images without managing EC2 instances. RDS handles persistent state in a VPC subnet with no public exposure. Every resource is defined in Terraform, versioned in Git, and deployable without manual console access.',
+  'case.stabled.solution.p3':
+    'GitHub Actions drives CI/CD — on every push to the main branch, images are built, tested, pushed to ECR, and deployed to ECS with a zero-downtime rolling update. The pipeline also applies Terraform changes after plan approval, so infrastructure drift is caught before it reaches production.',
+  'case.stabled.results.label': 'Results',
+  'case.stabled.results.title': 'Production-grade from the start',
+  'case.stabled.r1.v': '99.9%',
+  'case.stabled.r1.l': 'uptime SLA',
+  'case.stabled.r2.v': '<2s',
+  'case.stabled.r2.l': 'settlement latency',
+  'case.stabled.r3.v': '0',
+  'case.stabled.r3.l': 'production incidents at launch',
+  'case.stabled.r4.v': '100%',
+  'case.stabled.r4.l': 'infrastructure as code',
+  'case.stabled.cta.label': 'Want the same for your platform?',
+  'case.stabled.cta.title': 'Let\'s talk about your infrastructure',
+  'case.stabled.cta.sub':
+    'Whether you\'re starting fresh or modernizing an existing setup, we\'ll tell you exactly what to build and in what order.',
+  'case.stabled.cta.btn': 'Get your free assessment',
 };
 
 export default en;

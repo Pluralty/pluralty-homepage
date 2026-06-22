@@ -87,6 +87,12 @@ const es: Record<string, string> = {
   'cases.muchticket.desc':
     'Muchticket vende entradas para eventos en Latinoamérica y Europa, con colas virtuales que aguantan cuando cien mil fans tocan "comprar" al mismo tiempo. Mantenemos esa infraestructura de pie en cada salida a la venta.',
 
+  'cases.pgsa.tag': 'Escritorios remotos',
+  'cases.pgsa.desc':
+    'PGSA migró toda su plantilla a escritorios en la nube con AWS Workspaces, eliminando la infraestructura física de desktops y habilitando acceso remoto seguro desde cualquier dispositivo.',
+
+  'cases.read': 'Leer caso de éxito',
+
   // Partnerships
   'partners.eyebrow': 'Por qué confían en nosotros',
   'partners.title': 'Respaldados por los partnerships que importan',
@@ -154,6 +160,43 @@ const es: Record<string, string> = {
 
   // Language
   'lang.label': 'Idioma',
+
+  // Case study — Stabled
+  'case.stabled.meta.title': 'Stabled · Infraestructura cloud de grado fintech — Pluralty',
+  'case.stabled.meta.desc':
+    'Cómo Pluralty construyó la infraestructura de producción de Stabled, una plataforma de pagos cross-border con USDC.',
+  'cases.back': '← Volver a casos de éxito',
+  'case.stabled.tag': 'Fintech · Pagos cross-border',
+  'case.stabled.tagline': 'Moviendo dinero entre países en segundos, a una fracción de las comisiones bancarias.',
+  'case.stabled.challenge.label': 'El desafío',
+  'case.stabled.challenge.title': 'Construir infraestructura de pagos que genere confianza',
+  'case.stabled.challenge.p1':
+    'Stabled necesitaba una plataforma capaz de liquidar transacciones USDC cross-border en el instante en que llegaban, con la confiabilidad y postura de seguridad que exige una fintech. La infraestructura tenía que ser auditable, multi-ambiente y construida desde el día uno como código.',
+  'case.stabled.challenge.p2':
+    'El equipo se movía rápido, pero necesitaban una base que pudiera crecer sin ser reescrita: que separara los concerns a nivel de cuenta AWS y les diera a los desarrolladores caminos de despliegue claros desde cada commit.',
+  'case.stabled.solution.label': 'La solución',
+  'case.stabled.solution.title': 'Arquitectura multi-cuenta para aislamiento y velocidad',
+  'case.stabled.solution.p1':
+    'Estructuramos Stabled bajo AWS Organizations desde el día uno, dándole a producción su propia cuenta aislada de staging y tooling. Una mala configuración en un ambiente no productivo literalmente no puede alcanzar producción: el radio de impacto queda acotado por el límite de la cuenta.',
+  'case.stabled.solution.p2':
+    'Los workloads de la aplicación corren en ECS Fargate detrás de un Application Load Balancer, permitiendo al equipo desplegar imágenes de contenedores sin administrar instancias EC2. RDS maneja el estado persistente en una subred VPC sin exposición pública. Cada recurso está definido en Terraform, versionado en Git y desplegable sin acceso manual a la consola.',
+  'case.stabled.solution.p3':
+    'GitHub Actions conduce el CI/CD: en cada push a la rama main, las imágenes se construyen, testean, suben a ECR y se despliegan en ECS con un rolling update sin downtime. El pipeline también aplica cambios de Terraform tras la aprobación del plan, para que el drift de infraestructura se detecte antes de llegar a producción.',
+  'case.stabled.results.label': 'Resultados',
+  'case.stabled.results.title': 'Production-grade desde el inicio',
+  'case.stabled.r1.v': '99.9%',
+  'case.stabled.r1.l': 'SLA de disponibilidad',
+  'case.stabled.r2.v': '<2s',
+  'case.stabled.r2.l': 'latencia de liquidación',
+  'case.stabled.r3.v': '0',
+  'case.stabled.r3.l': 'incidentes en producción al lanzar',
+  'case.stabled.r4.v': '100%',
+  'case.stabled.r4.l': 'infraestructura como código',
+  'case.stabled.cta.label': '¿Querés lo mismo para tu plataforma?',
+  'case.stabled.cta.title': 'Hablemos de tu infraestructura',
+  'case.stabled.cta.sub':
+    'Ya sea que estés arrancando de cero o modernizando lo que tenés, te decimos exactamente qué construir y en qué orden.',
+  'case.stabled.cta.btn': 'Pedí tu assessment gratis',
 };
 
 export default es;
