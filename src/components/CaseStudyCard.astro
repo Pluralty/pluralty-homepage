@@ -1,7 +1,6 @@
 ---
 import Tr from './Tr.astro';
 import Icon from './Icon.astro';
-
 interface Props {
   name?: string;
   url?: string;
@@ -10,95 +9,105 @@ interface Props {
   id: string;
   stack: string[];
   index: number;
+  logoImg?: { src: string };
   logoColor?: string;
   logoBg?: string;
   logoText?: string;
 }
-const { name, url, detailUrl, display, id, stack, index, logoColor = 'var(--brand-glow)', logoBg = 'rgba(123,47,181,0.15)', logoText } = Astro.props;
+const {
+  name,
+  url,
+  detailUrl,
+  display,
+  id,
+  stack,
+  index,
+  logoImg,
+  logoColor = 'var(--brand-glow)',
+  logoBg = 'rgba(123,47,181,0.15)',
+  logoText,
+} = Astro.props;
 ---
 
-<article class="case" data-reveal style={`--reveal-delay:${index * 0.06}s`}>
-  <div class="connector" aria-hidden="true"></div>
-  <div class="body">
-    <div class="header-row">
-      {logoText && (
-        <div class="logo" style={`--lc:${logoColor};--lb:${logoBg}`}>
-          {logoText}
-        </div>
-      )}
-      <div class="meta">
-        <span class="num">{String(index + 1).padStart(2, '0')}</span>
-        <span class="tag"><Tr k={`cases.${id}.tag`} /></span>
-      </div>
+<article class="case" data-reveal style={`--reveal-delay:${index * 0.06}s;--lc:${logoColor};--lb:${logoBg}`}>
+  <div class="header-row">
+    <div class="logo">
+      {logoImg
+        ? <img src={logoImg.src} alt={display} class="logo-img" loading="lazy" decoding="async" />
+        : <span class="logo-text">{logoText}</span>
+      }
     </div>
-    <h3>{display}</h3>
-    <p><Tr k={`cases.${id}.desc`} as="span" /></p>
-    <div class="actions">
-      {detailUrl && (
-        <a class="read-more" href={detailUrl}>
-          <Tr k="cases.read" /><Icon name="arrow" size={15} />
-        </a>
-      )}
-      {url && (
-        <a class="visit" href={url} target="_blank" rel="noopener">
-          <span class="dom">{name}</span><Icon name="external" size={14} />
-        </a>
-      )}
-      {!url && !detailUrl && (
-        <span class="no-url"><Tr k="cases.soon" /></span>
-      )}
+    <div class="meta">
+      <span class="num">{String(index + 1).padStart(2, '0')}</span>
+      <span class="tag"><Tr k={`cases.${id}.tag`} /></span>
     </div>
   </div>
+
+  <h3>{display}</h3>
+  <p class="desc"><Tr k={`cases.${id}.desc`} as="span" /></p>
+
   <div class="stack">
     <span class="stack-label"><Tr k="cases.stack" /></span>
     <ul>
-      {stack.map((s) => <li>{s}</li>)}
+      {stack.map((s: string) => <li>{s}</li>)}
     </ul>
+  </div>
+
+  <div class="actions">
+    {detailUrl && (
+      <a class="read-more" href={detailUrl}>
+        <Tr k="cases.read" /><Icon name="arrow" size={15} />
+      </a>
+    )}
+    {url && (
+      <a class="visit" href={url} target="_blank" rel="noopener">
+        <span class="dom">{name}</span><Icon name="external" size={14} />
+      </a>
+    )}
+    {!url && !detailUrl && (
+      <span class="no-url"><Tr k="cases.soon" /></span>
+    )}
   </div>
 </article>
 
 <style>
   .case {
-    position: relative;
-    display: grid;
-    grid-template-columns: 1.5fr 1fr;
-    gap: var(--sp-6);
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-4);
     background: var(--surface);
     border: 1px solid var(--line);
     border-radius: var(--r-card);
-    padding: var(--sp-6) var(--sp-6) var(--sp-6) var(--sp-7);
-    overflow: hidden;
+    padding: var(--sp-6);
     transition: border-color 0.3s, transform var(--dur) var(--ease);
   }
   .case:hover {
     border-color: var(--line-strong);
     transform: translateY(-3px);
   }
-  .connector {
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 5px;
-    height: 60%;
-    background: linear-gradient(var(--brand-lift), var(--brand));
-    border-radius: 0 5px 5px 0;
-  }
   .header-row {
     display: flex;
     align-items: center;
     gap: var(--sp-4);
-    margin-bottom: var(--sp-3);
   }
   .logo {
     flex-shrink: 0;
-    width: 44px;
-    height: 44px;
+    width: 52px;
+    height: 52px;
     border-radius: 10px;
     background: var(--lb);
     border: 1px solid color-mix(in srgb, var(--lc) 35%, transparent);
     display: grid;
     place-items: center;
+    overflow: hidden;
+  }
+  .logo-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 6px;
+  }
+  .logo-text {
     font-family: var(--font-display);
     font-weight: 700;
     font-size: 13px;
@@ -107,8 +116,8 @@ const { name, url, detailUrl, display, id, stack, index, logoColor = 'var(--bran
   }
   .meta {
     display: flex;
-    align-items: center;
-    gap: var(--sp-3);
+    flex-direction: column;
+    gap: 2px;
   }
   .num {
     font-family: var(--font-mono);
@@ -119,22 +128,50 @@ const { name, url, detailUrl, display, id, stack, index, logoColor = 'var(--bran
     font-family: var(--font-mono);
     font-size: var(--step--1);
     color: var(--muted);
-    letter-spacing: 0.04em;
+    letter-spacing: 0.03em;
   }
   .case h3 {
-    font-size: var(--step-3);
+    font-size: var(--step-2);
   }
-  .body p {
-    margin-top: var(--sp-3);
+  .desc {
     color: var(--muted);
-    max-width: 52ch;
+    font-size: var(--step-0);
+    flex: 1;
+    line-height: 1.6;
+  }
+  .stack {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-2);
+  }
+  .stack-label {
+    font-family: var(--font-mono);
+    font-size: var(--step--1);
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--muted);
+  }
+  .stack ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--sp-2);
+  }
+  .stack li {
+    font-family: var(--font-mono);
+    font-size: var(--step--1);
+    padding: 4px 10px;
+    border: 1px solid var(--line-strong);
+    border-radius: var(--r-pill);
+    color: var(--paper);
+    background: rgba(123, 47, 181, 0.08);
   }
   .actions {
     display: flex;
     align-items: center;
-    gap: var(--sp-5);
-    margin-top: var(--sp-4);
+    gap: var(--sp-4);
     flex-wrap: wrap;
+    margin-top: auto;
+    padding-top: var(--sp-2);
   }
   .read-more {
     display: inline-flex;
@@ -161,58 +198,11 @@ const { name, url, detailUrl, display, id, stack, index, logoColor = 'var(--bran
     font-family: var(--font-mono);
     transition: color 0.2s;
   }
-  .visit:hover {
-    color: var(--paper);
-  }
-  .visit .dom {
-    color: var(--brand-glow);
-  }
+  .visit:hover { color: var(--paper); }
+  .visit .dom { color: var(--brand-glow); }
   .no-url {
     font-size: var(--step--1);
     color: var(--muted);
     font-style: italic;
-  }
-  .stack {
-    border-left: 1px solid var(--line);
-    padding-left: var(--sp-6);
-    display: flex;
-    flex-direction: column;
-    gap: var(--sp-3);
-    align-self: start;
-    padding-top: var(--sp-1);
-  }
-  .stack-label {
-    font-family: var(--font-mono);
-    font-size: var(--step--1);
-    text-transform: uppercase;
-    letter-spacing: 0.14em;
-    color: var(--muted);
-  }
-  .stack ul {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--sp-2);
-  }
-  .stack li {
-    font-family: var(--font-mono);
-    font-size: var(--step--1);
-    padding: 5px 10px;
-    border: 1px solid var(--line-strong);
-    border-radius: var(--r-pill);
-    color: var(--paper);
-    background: rgba(123, 47, 181, 0.08);
-  }
-
-  @media (max-width: 800px) {
-    .case {
-      grid-template-columns: 1fr;
-      gap: var(--sp-5);
-    }
-    .stack {
-      border-left: 0;
-      border-top: 1px solid var(--line);
-      padding-left: 0;
-      padding-top: var(--sp-5);
-    }
   }
 </style>

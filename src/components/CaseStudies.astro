@@ -1,6 +1,9 @@
 ---
 import Tr from './Tr.astro';
 import CaseStudyCard from './CaseStudyCard.astro';
+import stabletLogo from '../assets/stabled-logo.png';
+import tradepLogo from '../assets/tradeprentice-logo.png';
+import muchLogo from '../assets/MUCHTICKET.png';
 
 const cases = [
   {
@@ -10,10 +13,9 @@ const cases = [
     url: 'https://stabled.co',
     detailUrl: '/cases/stabled',
     stack: ['AWS Organizations', 'ALB', 'ECS', 'RDS', 'GitHub Actions', 'Terraform'],
-    // Monogram: violet fintech feel
-    logoColor: '#7B2FB5',
-    logoBg: 'rgba(123,47,181,0.18)',
-    logoText: 'S',
+    logoImg: stabletLogo,
+    logoColor: '#FFFFFF',
+    logoBg: '#1B6CA8',
   },
   {
     id: 'tradeprentice',
@@ -22,9 +24,9 @@ const cases = [
     url: 'https://tradeprentice.io',
     detailUrl: undefined,
     stack: ['AWS Organizations', 'ALB', 'ECS', 'RDS', 'GitHub Actions', 'Terraform'],
-    logoColor: '#2563EB',
-    logoBg: 'rgba(37,99,235,0.14)',
-    logoText: 'TP',
+    logoImg: tradepLogo,
+    logoColor: '#374151',
+    logoBg: '#F3F4F6',
   },
   {
     id: 'muchticket',
@@ -33,9 +35,9 @@ const cases = [
     url: 'https://www.muchticket.com',
     detailUrl: undefined,
     stack: ['AWS Organizations', 'ALB', 'ECS', 'RDS', 'Terraform'],
-    logoColor: '#E05000',
-    logoBg: 'rgba(224,80,0,0.14)',
-    logoText: 'MT',
+    logoImg: muchLogo,
+    logoColor: '#00B5D8',
+    logoBg: '#FFFFFF',
   },
   {
     id: 'pgsa',
@@ -44,6 +46,7 @@ const cases = [
     url: undefined,
     detailUrl: undefined,
     stack: ['AWS Organizations', 'AWS Workspaces', 'Active Directory', 'Terraform'],
+    logoImg: undefined,
     logoColor: '#0078D4',
     logoBg: 'rgba(0,120,212,0.14)',
     logoText: 'PG',
@@ -59,7 +62,7 @@ const cases = [
       <p class="lead"><Tr k="cases.sub" as="span" /></p>
     </header>
 
-    <div class="list">
+    <div class="grid">
       {cases.map((c, i) => <CaseStudyCard {...c} index={i} />)}
     </div>
   </div>
@@ -77,9 +80,15 @@ const cases = [
   .head .lead {
     margin-top: var(--sp-4);
   }
-  .list {
-    display: flex;
-    flex-direction: column;
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     gap: var(--sp-4);
+    align-items: start;
+  }
+  @media (max-width: 720px) {
+    .grid {
+      grid-template-columns: 1fr;
+    }
   }
 </style>

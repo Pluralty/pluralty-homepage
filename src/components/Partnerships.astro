@@ -2,6 +2,10 @@
 import Tr from './Tr.astro';
 import awsLogo from '../assets/aws-blanco.png';
 import tdsynnexLogo from '../assets/SNX.png';
+import badgeClf from '../assets/aws-cloudpractitioner.png';
+import badgeSaa from '../assets/aws-sac.png';
+import badgeSap from '../assets/aws-sap.png';
+import badgeScs from '../assets/aws-security.png';
 
 const partners = [
   {
@@ -23,22 +27,22 @@ const partners = [
 const certs = [
   {
     k: 'clf',
-    badge: 'https://d1.awsstatic.com/onedam/marketing-channels/website/aws/en_US/certification/approved/images/certification-badges/clf-badge-resized.4a7409608dc621c7c6078864e16b031378af59e3.png',
+    badge: badgeClf,
     url: 'https://aws.amazon.com/certification/certified-cloud-practitioner/',
   },
   {
     k: 'saa',
-    badge: 'https://d1.awsstatic.com/onedam/marketing-channels/website/aws/en_US/certification/approved/images/certification-badges/saa-badge-resized.81aa49f64034b69db1ee58c09661659d0a1edab4.png',
+    badge: badgeSaa,
     url: 'https://aws.amazon.com/certification/certified-solutions-architect-associate/',
   },
   {
     k: 'sap',
-    badge: 'https://d1.awsstatic.com/onedam/marketing-channels/website/aws/en_US/certification/approved/images/certification-badges/sap-badge-resized.3783f733991080b3063e83920068c671c17ecb7a.png',
+    badge: badgeSap,
     url: 'https://aws.amazon.com/certification/certified-solutions-architect-professional/',
   },
   {
     k: 'scs',
-    badge: 'https://d1.awsstatic.com/onedam/marketing-channels/website/aws/en_US/certification/approved/images/certification-badges/scs-badge-resized.5493b851c756eab04f5222c78494bc2c6054084d.png',
+    badge: badgeScs,
     url: 'https://aws.amazon.com/certification/certified-security-specialty/',
   },
 ];
@@ -79,7 +83,7 @@ const certs = [
               class="cert-card"
               style={`--reveal-delay:${i * 0.07}s`}
             >
-              <img src={c.badge} alt={`AWS ${c.k.toUpperCase()} badge`} class="cert-badge" loading="lazy" decoding="async" />
+              <img src={c.badge.src} alt={`AWS ${c.k.toUpperCase()} badge`} class="cert-badge" loading="lazy" decoding="async" />
               <div class="cert-info">
                 <strong><Tr k={`certs.${c.k}.t`} /></strong>
                 <span><Tr k={`certs.${c.k}.d`} /></span>

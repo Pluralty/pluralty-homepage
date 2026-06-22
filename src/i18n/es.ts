@@ -53,7 +53,7 @@ const es: Record<string, string> = {
   'services.s5.d':
     'Accesos de mínimo privilegio, redes endurecidas y reducción continua de hallazgos, liderado por un arquitecto con Security Specialty de AWS.',
   'services.mode':
-    'Trabajamos como una extensión de tu equipo: abono mensual o proyecto puntual, siempre con documentación que te queda.',
+    'Trabajamos como una extensión de tu equipo: proyectos o servicios recurrentes.',
 
   // Problem
   'problem.eyebrow': 'El problema',
@@ -76,9 +76,8 @@ const es: Record<string, string> = {
 
   // Cases
   'cases.eyebrow': 'Casos de éxito',
-  'cases.title': 'Infraestructura en producción que operamos todos los días',
-  'cases.sub':
-    'Plataformas reales, carga real. Cada una corre sobre infraestructura como código, bajo su propia cuenta de AWS Organizations.',
+  'cases.title': 'Infraestructura en producción',
+  'cases.sub': 'Plataformas reales, carga real.',
   'cases.visit': 'Visitar sitio',
   'cases.soon': 'Caso detallado muy pronto',
   'cases.stack': 'Stack',

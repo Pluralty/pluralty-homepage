@@ -43,7 +43,7 @@ resource "aws_cloudfront_response_headers_policy" "security" {
     content_security_policy {
       # Allow same-origin resources + the API Gateway endpoint for the form.
       # Fonts self-hosted; no external CDN.
-      content_security_policy = "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://*.execute-api.us-east-1.amazonaws.com; frame-ancestors 'none';"
+      content_security_policy = "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self' data:; img-src 'self' data:; connect-src 'self' https://*.execute-api.us-east-1.amazonaws.com; frame-ancestors 'none';"
       override                = true
     }
   }

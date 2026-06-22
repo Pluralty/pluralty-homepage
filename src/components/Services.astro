@@ -3,11 +3,10 @@ import Tr from './Tr.astro';
 import Icon from './Icon.astro';
 
 const cards = [
-  { k: 's1', icon: 'gauge', cls: 'feature' },
-  { k: 's2', icon: 'coins', cls: '' },
-  { k: 's3', icon: 'refresh', cls: '' },
-  { k: 's4', icon: 'infinity', cls: '' },
-  { k: 's5', icon: 'shield', cls: 'wide' },
+  { k: 's1', icon: 'gauge' },
+  { k: 's2', icon: 'coins' },
+  { k: 's3', icon: 'refresh' },
+  { k: 's5', icon: 'shield' },
 ];
 ---
 
@@ -19,10 +18,10 @@ const cards = [
       <p class="lead"><Tr k="services.sub" as="span" /></p>
     </header>
 
-    <div class="bento">
+    <div class="grid">
       {
         cards.map((c, i) => (
-          <article class={`card ${c.cls}`} data-reveal style={`--reveal-delay:${i * 0.05}s`}>
+          <article class="card" data-reveal style={`--reveal-delay:${i * 0.05}s`}>
             <span class="ic">
               <Icon name={c.icon} size={26} />
             </span>
@@ -54,13 +53,12 @@ const cards = [
     margin-top: var(--sp-4);
   }
 
-  .bento {
+  .grid {
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: var(--sp-4);
   }
   .card {
-    grid-column: span 2;
     background: var(--surface);
     border: 1px solid var(--line);
     border-radius: var(--r-card);
@@ -74,24 +72,6 @@ const cards = [
     transform: translateY(-4px);
     border-color: var(--line-strong);
     background: var(--surface-2);
-  }
-  .card.feature {
-    grid-column: span 3;
-    background:
-      radial-gradient(120% 120% at 0% 0%, rgba(75, 0, 118, 0.55), transparent 60%),
-      var(--surface);
-  }
-  .card.feature h3 {
-    font-size: var(--step-2);
-  }
-  .card:nth-child(2) {
-    grid-column: span 3;
-  }
-  .card.wide {
-    grid-column: span 6;
-    background:
-      radial-gradient(80% 160% at 100% 0%, rgba(123, 47, 181, 0.28), transparent 60%),
-      var(--surface);
   }
   .ic {
     display: inline-grid;
@@ -109,7 +89,6 @@ const cards = [
   .card p {
     color: var(--muted);
     font-size: var(--step-0);
-    max-width: 46ch;
   }
   .mode {
     margin-top: var(--sp-6);
@@ -121,26 +100,9 @@ const cards = [
     margin-inline: auto;
   }
 
-  @media (max-width: 860px) {
-    .bento {
-      grid-template-columns: 1fr 1fr;
-    }
-    .card,
-    .card.feature,
-    .card:nth-child(2),
-    .card.wide {
-      grid-column: span 2;
-    }
-  }
   @media (max-width: 560px) {
-    .bento {
+    .grid {
       grid-template-columns: 1fr;
-    }
-    .card,
-    .card.feature,
-    .card:nth-child(2),
-    .card.wide {
-      grid-column: span 1;
     }
   }
 </style>
