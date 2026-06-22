@@ -1,6 +1,7 @@
 ---
 import Tr from './Tr.astro';
 import Icon from './Icon.astro';
+import photo from '../assets/ariel-molina-pluralty.jpeg';
 
 const socials = [
   { icon: 'linkedin', label: 'LinkedIn', url: 'https://www.linkedin.com/in/arieldevops/' },
@@ -15,7 +16,7 @@ const socials = [
   <div class="wrap grid">
     <div class="visual" data-reveal>
       <div class="avatar">
-        <span class="initials">AM</span>
+        <img src={photo.src} alt="Ariel Molina — Founder, Pluralty" width={photo.width} height={photo.height} loading="lazy" decoding="async" />
       </div>
       <a
         class="cb"
@@ -74,20 +75,16 @@ const socials = [
   .avatar {
     aspect-ratio: 1;
     border-radius: var(--r-card);
-    display: grid;
-    place-items: center;
-    background:
-      radial-gradient(120% 120% at 20% 10%, rgba(123, 47, 181, 0.6), transparent 60%),
-      linear-gradient(150deg, var(--brand), #220037);
+    overflow: hidden;
     border: 1px solid var(--line-strong);
+    box-shadow: 0 0 0 4px rgba(123, 47, 181, 0.12), var(--shadow-violet);
   }
-  .initials {
-    font-family: var(--font-display);
-    font-weight: 700;
-    font-size: clamp(4rem, 12vw, 8rem);
-    color: #fff;
-    opacity: 0.92;
-    letter-spacing: -0.04em;
+  .avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
   }
   .cb {
     display: flex;
