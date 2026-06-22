@@ -114,10 +114,10 @@ const certs = [
     background: var(--surface);
     border: 1px solid var(--line);
     border-radius: var(--r-card);
-    padding: var(--sp-6);
+    padding: var(--sp-8);
     display: flex;
     flex-direction: column;
-    gap: var(--sp-4);
+    gap: var(--sp-5);
     transition: border-color 0.3s, transform var(--dur) var(--ease), background 0.3s;
   }
   .trust-card:hover {
@@ -128,18 +128,18 @@ const certs = [
   .logo-area {
     display: flex;
     align-items: center;
-    width: 72px;
-    height: 52px;
+    width: 160px;
+    height: 100px;
   }
   .partner-logo {
-    max-width: 64px;
-    max-height: 44px;
+    max-width: 150px;
+    max-height: 90px;
     width: auto;
     height: auto;
     object-fit: contain;
   }
   .trust-card h3 {
-    font-size: var(--step-1);
+    font-size: var(--step-2);
   }
   .trust-card p {
     color: var(--muted);
@@ -172,8 +172,9 @@ const certs = [
   }
   .cert-card {
     display: flex;
-    flex-direction: column;
-    gap: var(--sp-4);
+    flex-direction: row;
+    align-items: center;
+    gap: var(--sp-5);
     background: var(--surface);
     border: 1px solid var(--line);
     border-radius: var(--r-card);
@@ -187,8 +188,9 @@ const certs = [
     transform: translateY(-2px);
   }
   .cert-badge {
-    width: 110px;
-    height: 110px;
+    flex-shrink: 0;
+    width: 90px;
+    height: 90px;
     object-fit: contain;
   }
   .cert-info {
