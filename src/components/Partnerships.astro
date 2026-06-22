@@ -1,23 +1,22 @@
 ---
 import Tr from './Tr.astro';
+import awsLogo from '../assets/Amazon_Web_Services_Logo.svg';
+import tdsynnexLogo from '../assets/tdsynnex-logo.jpeg';
 
 const items = [
   {
     k: 'tdsynnex',
-    abbr: 'TD\nSYNNEX',
     color: '#005B9A',
     bg: 'rgba(0,91,154,0.15)',
+    img: tdsynnexLogo,
+    alt: 'TD SYNNEX',
   },
   {
     k: 'aws',
-    abbr: 'AWS',
     color: '#FF9900',
     bg: 'rgba(255,153,0,0.12)',
-    svg: `<svg viewBox="0 0 48 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <path d="M12 3h3l2 8 2-6h2l2 6 2-8h3L25 17h-3L20.5 10 19 17h-3z" fill="#FF9900"/>
-      <path d="M9 14 Q24 20 39 14" stroke="#FF9900" stroke-width="2.5" stroke-linecap="round" fill="none"/>
-      <path d="M37 12 L39 14 L35 15" stroke="#FF9900" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-    </svg>`,
+    img: awsLogo,
+    alt: 'AWS',
   },
   {
     k: 'cert',
@@ -39,8 +38,8 @@ const items = [
         items.map((it, i) => (
           <article class="trust-card" data-reveal style={`--reveal-delay:${i * 0.06}s`}>
             <div class="logo-area" style={`--lc:${it.color};--lb:${it.bg}`}>
-              {it.svg ? (
-                <Fragment set:html={it.svg} />
+              {it.img ? (
+                <img src={it.img.src} alt={it.alt} class="partner-logo" loading="lazy" decoding="async" />
               ) : (
                 <span class="abbr">{it.abbr}</span>
               )}
@@ -99,6 +98,13 @@ const items = [
   .logo-area :global(svg) {
     width: 52px;
     height: auto;
+  }
+  .partner-logo {
+    max-width: 52px;
+    max-height: 36px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
   }
   .abbr {
     font-family: var(--font-mono);

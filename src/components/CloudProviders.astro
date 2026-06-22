@@ -1,11 +1,13 @@
 ---
-import Icon from './Icon.astro';
 import Tr from './Tr.astro';
+import awsLogo from '../assets/Amazon_Web_Services_Logo.svg';
+import azureLogo from '../assets/Microsoft_Azure.svg.png';
+import gcpLogo from '../assets/google_cloud.png';
 
 const clouds = [
-  { icon: 'aws',   label: 'AWS',           color: '#FF9900', bg: 'rgba(255,153,0,0.08)' },
-  { icon: 'azure', label: 'Microsoft Azure', color: '#0078D4', bg: 'rgba(0,120,212,0.08)' },
-  { icon: 'gcp',   label: 'Google Cloud',   color: '#4285F4', bg: 'rgba(66,133,244,0.08)' },
+  { img: awsLogo,   alt: 'AWS',            label: 'AWS',            color: '#FF9900', bg: 'rgba(255,153,0,0.08)',   imgH: 22 },
+  { img: azureLogo, alt: 'Microsoft Azure', label: 'Microsoft Azure', color: '#0078D4', bg: 'rgba(0,120,212,0.08)', imgH: 28 },
+  { img: gcpLogo,   alt: 'Google Cloud',    label: 'Google Cloud',    color: '#4285F4', bg: 'rgba(66,133,244,0.08)', imgH: 28 },
 ];
 ---
 
@@ -21,7 +23,7 @@ const clouds = [
         clouds.map((c) => (
           <li style={`--cc:${c.color};--cb:${c.bg}`}>
             <span class="icon-wrap">
-              <Icon name={c.icon} size={28} />
+              <img src={c.img.src} alt={c.alt} height={c.imgH} style={`height:${c.imgH}px;width:auto`} loading="lazy" decoding="async" />
             </span>
             {c.label}
           </li>
