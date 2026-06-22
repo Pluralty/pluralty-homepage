@@ -111,9 +111,17 @@ const en: Record<string, string> = {
   'partners.aws.t': 'AWS Partner',
   'partners.aws.d':
     'As an AWS Partner we are cleared to design and run production projects on AWS, the assurance teams already on AWS look for.',
-  'partners.cert.t': 'AWS Certified',
+  'partners.cert.t': 'AWS Certifications',
   'partners.cert.d':
-    'A certified company with Solutions Architect and Security Specialty credentials behind every architecture we ship.',
+    'Each certification is concrete evidence that the person designing your infrastructure knows what they are doing — not a marketing claim, but a tested credential.',
+  'certs.clf.t': 'Cloud Practitioner',
+  'certs.clf.d': 'Mastery of AWS fundamentals: core services, shared responsibility model and architectural best practices.',
+  'certs.saa.t': 'Solutions Architect Associate',
+  'certs.saa.d': 'Design of secure, resilient and cost-efficient architectures. The reference certification for teams building on AWS.',
+  'certs.sap.t': 'Solutions Architect Professional',
+  'certs.sap.d': 'The most demanding AWS architecture credential: complex migrations, multi-account strategies and optimisation at scale.',
+  'certs.scs.t': 'Security Specialty',
+  'certs.scs.d': 'Specialisation in data security, IAM, infrastructure and incident response. The cert that matters when security is non-negotiable.',
 
   // Cloud providers
   'clouds.eyebrow': 'Provider agnostic',

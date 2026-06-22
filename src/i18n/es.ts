@@ -110,9 +110,17 @@ const es: Record<string, string> = {
   'partners.aws.t': 'AWS Partner',
   'partners.aws.d':
     'Como AWS Partner estamos habilitados para diseñar y operar proyectos en producción sobre AWS, la garantía que buscan los equipos que ya trabajan en AWS.',
-  'partners.cert.t': 'Certificados en AWS',
+  'partners.cert.t': 'Certificaciones AWS',
   'partners.cert.d':
-    'Una empresa certificada, con credenciales de Solutions Architect y Security Specialty detrás de cada arquitectura que entregamos.',
+    'Cada certificación es evidencia concreta de que quien diseña tu infraestructura sabe lo que hace. No es marketing: es la diferencia entre opinar y saber.',
+  'certs.clf.t': 'Cloud Practitioner',
+  'certs.clf.d': 'Dominio de los fundamentos de AWS: servicios core, modelo de responsabilidad compartida y buenas prácticas de arquitectura.',
+  'certs.saa.t': 'Solutions Architect Associate',
+  'certs.saa.d': 'Diseño de arquitecturas seguras, resilientes y eficientes en costo. El certificado de referencia para quienes construyen sobre AWS.',
+  'certs.sap.t': 'Solutions Architect Professional',
+  'certs.sap.d': 'El nivel más exigente de arquitectura en AWS: migraciones complejas, estrategias multi-account y optimización a escala.',
+  'certs.scs.t': 'Security Specialty',
+  'certs.scs.d': 'Especialización en seguridad de datos, IAM, infraestructura y respuesta a incidentes. La cert que importa cuando la seguridad no es negociable.',
 
   // Cloud providers
   'clouds.eyebrow': 'Agnósticos de proveedor',

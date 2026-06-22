@@ -1,28 +1,45 @@
 ---
 import Tr from './Tr.astro';
-import awsLogo from '../assets/Amazon_Web_Services_Logo.svg';
-import tdsynnexLogo from '../assets/tdsynnex-logo.jpeg';
+import awsLogo from '../assets/aws-blanco.png';
+import tdsynnexLogo from '../assets/SNX.png';
 
-const items = [
+const partners = [
   {
     k: 'tdsynnex',
-    color: '#005B9A',
-    bg: 'rgba(0,91,154,0.15)',
+    color: '#00B5D8',
+    bg: 'rgba(0,181,216,0.10)',
     img: tdsynnexLogo,
     alt: 'TD SYNNEX',
   },
   {
     k: 'aws',
     color: '#FF9900',
-    bg: 'rgba(255,153,0,0.12)',
+    bg: 'rgba(255,153,0,0.10)',
     img: awsLogo,
     alt: 'AWS',
   },
+];
+
+const certs = [
   {
-    k: 'cert',
-    abbr: '✓\nCERT',
-    color: '#7B2FB5',
-    bg: 'rgba(123,47,181,0.15)',
+    k: 'clf',
+    badge: 'https://d1.awsstatic.com/onedam/marketing-channels/website/aws/en_US/certification/approved/images/certification-badges/clf-badge-resized.4a7409608dc621c7c6078864e16b031378af59e3.png',
+    url: 'https://aws.amazon.com/certification/certified-cloud-practitioner/',
+  },
+  {
+    k: 'saa',
+    badge: 'https://d1.awsstatic.com/onedam/marketing-channels/website/aws/en_US/certification/approved/images/certification-badges/saa-badge-resized.81aa49f64034b69db1ee58c09661659d0a1edab4.png',
+    url: 'https://aws.amazon.com/certification/certified-solutions-architect-associate/',
+  },
+  {
+    k: 'sap',
+    badge: 'https://d1.awsstatic.com/onedam/marketing-channels/website/aws/en_US/certification/approved/images/certification-badges/sap-badge-resized.3783f733991080b3063e83920068c671c17ecb7a.png',
+    url: 'https://aws.amazon.com/certification/certified-solutions-architect-professional/',
+  },
+  {
+    k: 'scs',
+    badge: 'https://d1.awsstatic.com/onedam/marketing-channels/website/aws/en_US/certification/approved/images/certification-badges/scs-badge-resized.5493b851c756eab04f5222c78494bc2c6054084d.png',
+    url: 'https://aws.amazon.com/certification/certified-security-specialty/',
   },
 ];
 ---
@@ -33,26 +50,44 @@ const items = [
       <span class="eyebrow"><Tr k="partners.eyebrow" /></span>
       <h2><Tr k="partners.title" as="span" /></h2>
     </header>
-    <div class="grid">
+    <div class="grid" data-reveal>
       {
-        items.map((it, i) => (
-          <article class="trust-card" data-reveal style={`--reveal-delay:${i * 0.06}s`}>
-            <div class="logo-area" style={`--lc:${it.color};--lb:${it.bg}`}>
-              {it.img ? (
-                <img src={it.img.src} alt={it.alt} class="partner-logo" loading="lazy" decoding="async" />
-              ) : (
-                <span class="abbr">{it.abbr}</span>
-              )}
+        partners.map((it) => (
+          <article class="trust-card" style={`--lc:${it.color};--lb:${it.bg}`}>
+            <div class="logo-area">
+              <img src={it.img.src} alt={it.alt} class="partner-logo" loading="lazy" decoding="async" />
             </div>
-            <h3>
-              <Tr k={`partners.${it.k}.t`} />
-            </h3>
-            <p>
-              <Tr k={`partners.${it.k}.d`} as="span" />
-            </p>
+            <h3><Tr k={`partners.${it.k}.t`} /></h3>
+            <p><Tr k={`partners.${it.k}.d`} as="span" /></p>
           </article>
         ))
       }
+    </div>
+
+    <div class="certs-block" data-reveal>
+      <div class="certs-head">
+        <span class="eyebrow cert-eyebrow"><Tr k="partners.cert.t" /></span>
+        <p class="certs-sub"><Tr k="partners.cert.d" as="span" /></p>
+      </div>
+      <div class="certs-grid">
+        {
+          certs.map((c, i) => (
+            <a
+              href={c.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="cert-card"
+              style={`--reveal-delay:${i * 0.07}s`}
+            >
+              <img src={c.badge} alt={`AWS ${c.k.toUpperCase()} badge`} class="cert-badge" loading="lazy" decoding="async" />
+              <div class="cert-info">
+                <strong><Tr k={`certs.${c.k}.t`} /></strong>
+                <span><Tr k={`certs.${c.k}.d`} /></span>
+              </div>
+            </a>
+          ))
+        }
+      </div>
     </div>
   </div>
 </section>
@@ -68,7 +103,7 @@ const items = [
   }
   .grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: var(--sp-4);
   }
   .trust-card {
@@ -79,42 +114,25 @@ const items = [
     display: flex;
     flex-direction: column;
     gap: var(--sp-4);
-    transition: border-color 0.3s, transform var(--dur) var(--ease);
+    transition: border-color 0.3s, transform var(--dur) var(--ease), background 0.3s;
   }
   .trust-card:hover {
-    border-color: var(--line-strong);
+    border-color: color-mix(in srgb, var(--lc) 40%, transparent);
+    background: var(--lb);
     transform: translateY(-2px);
   }
   .logo-area {
     display: flex;
     align-items: center;
-    justify-content: center;
     width: 72px;
     height: 52px;
-    border-radius: 10px;
-    background: var(--lb, rgba(75,0,118,0.15));
-    border: 1px solid color-mix(in srgb, var(--lc, var(--brand)) 30%, transparent);
-  }
-  .logo-area :global(svg) {
-    width: 52px;
-    height: auto;
   }
   .partner-logo {
-    max-width: 52px;
-    max-height: 36px;
+    max-width: 64px;
+    max-height: 44px;
     width: auto;
     height: auto;
     object-fit: contain;
-  }
-  .abbr {
-    font-family: var(--font-mono);
-    font-weight: 700;
-    font-size: 11px;
-    letter-spacing: 0.05em;
-    color: var(--lc, var(--brand-glow));
-    white-space: pre;
-    text-align: center;
-    line-height: 1.3;
   }
   .trust-card h3 {
     font-size: var(--step-1);
@@ -124,8 +142,80 @@ const items = [
     font-size: var(--step-0);
     flex: 1;
   }
+
+  /* Certifications block */
+  .certs-block {
+    margin-top: var(--sp-8);
+    padding-top: var(--sp-7);
+    border-top: 1px solid var(--line);
+  }
+  .certs-head {
+    max-width: 44rem;
+    margin-bottom: var(--sp-6);
+  }
+  .cert-eyebrow {
+    color: var(--brand-glow);
+  }
+  .certs-sub {
+    margin-top: var(--sp-3);
+    color: var(--muted);
+    font-size: var(--step-0);
+  }
+  .certs-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--sp-4);
+  }
+  .cert-card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-4);
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--r-card);
+    padding: var(--sp-5);
+    text-decoration: none;
+    transition: border-color 0.3s, transform var(--dur) var(--ease), background 0.3s;
+  }
+  .cert-card:hover {
+    border-color: color-mix(in srgb, #FF9900 40%, transparent);
+    background: rgba(255,153,0,0.06);
+    transform: translateY(-2px);
+  }
+  .cert-badge {
+    width: 72px;
+    height: 72px;
+    object-fit: contain;
+  }
+  .cert-info {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-2);
+    flex: 1;
+  }
+  .cert-info strong {
+    font-size: var(--step-0);
+    color: var(--paper);
+    font-family: var(--font-display);
+  }
+  .cert-info span {
+    font-size: var(--step--1);
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  @media (max-width: 900px) {
+    .certs-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
   @media (max-width: 820px) {
     .grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  @media (max-width: 480px) {
+    .certs-grid {
       grid-template-columns: 1fr;
     }
   }
