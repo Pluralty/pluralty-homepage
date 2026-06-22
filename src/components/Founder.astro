@@ -1,0 +1,209 @@
+---
+import Tr from './Tr.astro';
+import Icon from './Icon.astro';
+
+const socials = [
+  { icon: 'linkedin', label: 'LinkedIn', url: 'https://www.linkedin.com/in/arieldevops/' },
+  { icon: 'x', label: 'X', url: 'https://x.com/ariel_devops' },
+  { icon: 'youtube', label: 'YouTube', url: 'https://www.youtube.com/@arieldevops' },
+  { icon: 'instagram', label: 'Instagram', url: 'https://www.instagram.com/arieldevops' },
+  { icon: 'tiktok', label: 'TikTok', url: 'https://www.tiktok.com/@arieldevops' },
+];
+---
+
+<section class="section" id="founder">
+  <div class="wrap grid">
+    <div class="visual" data-reveal>
+      <div class="avatar">
+        <span class="initials">AM</span>
+      </div>
+      <a
+        class="cb"
+        href="https://builder.aws.com/community/@arieldevops?tab=badges"
+        target="_blank"
+        rel="noopener"
+      >
+        <span class="cb-mark">AWS</span>
+        <span class="cb-text">
+          <Tr k="founder.cb.t" />
+          <Icon name="external" size={14} />
+        </span>
+      </a>
+    </div>
+
+    <div class="copy" data-reveal style="--reveal-delay:.08s">
+      <span class="eyebrow"><Tr k="founder.eyebrow" /></span>
+      <h2><Tr k="founder.name" /></h2>
+      <p class="role"><Tr k="founder.role" as="span" /></p>
+      <p class="bio"><Tr k="founder.bio1" as="span" /></p>
+      <p class="bio"><Tr k="founder.bio2" as="span" /></p>
+      <p class="cb-explain"><Tr k="founder.cb.d" as="span" /></p>
+
+      <div class="social">
+        <span class="social-label"><Tr k="founder.social" /></span>
+        <ul>
+          {
+            socials.map((s) => (
+              <li>
+                <a href={s.url} target="_blank" rel="noopener" aria-label={s.label}>
+                  <Icon name={s.icon} size={20} />
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .grid {
+    display: grid;
+    grid-template-columns: 0.8fr 1.2fr;
+    gap: var(--sp-7);
+    align-items: start;
+  }
+  .visual {
+    position: sticky;
+    top: 100px;
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-4);
+  }
+  .avatar {
+    aspect-ratio: 1;
+    border-radius: var(--r-card);
+    display: grid;
+    place-items: center;
+    background:
+      radial-gradient(120% 120% at 20% 10%, rgba(123, 47, 181, 0.6), transparent 60%),
+      linear-gradient(150deg, var(--brand), #220037);
+    border: 1px solid var(--line-strong);
+  }
+  .initials {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(4rem, 12vw, 8rem);
+    color: #fff;
+    opacity: 0.92;
+    letter-spacing: -0.04em;
+  }
+  .cb {
+    display: flex;
+    align-items: center;
+    gap: var(--sp-3);
+    background: var(--surface);
+    border: 1px solid var(--line-strong);
+    border-radius: var(--r-card);
+    padding: var(--sp-4);
+    transition: border-color 0.3s, transform var(--dur) var(--ease);
+  }
+  .cb:hover {
+    border-color: var(--brand-lift);
+    transform: translateY(-2px);
+  }
+  .cb-mark {
+    font-family: var(--font-mono);
+    font-weight: 700;
+    color: #fff;
+    background: var(--brand);
+    padding: 8px 10px;
+    border-radius: 8px;
+    font-size: var(--step--1);
+  }
+  .cb-text {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 600;
+    font-size: var(--step-0);
+    color: var(--paper);
+  }
+  .cb-text :global(svg) {
+    color: var(--brand-glow);
+  }
+
+  .copy h2 {
+    font-size: var(--step-4);
+    margin-top: var(--sp-3);
+  }
+  .role {
+    font-family: var(--font-mono);
+    color: var(--brand-glow);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .bio {
+    margin-top: var(--sp-4);
+    color: var(--paper);
+    max-width: 62ch;
+  }
+  .cb-explain {
+    margin-top: var(--sp-4);
+    padding: var(--sp-4) var(--sp-5);
+    border-left: 3px solid var(--brand-lift);
+    background: var(--surface);
+    border-radius: 0 var(--r-input) var(--r-input) 0;
+    color: var(--muted);
+    max-width: 62ch;
+  }
+  .social {
+    margin-top: var(--sp-6);
+    display: flex;
+    align-items: center;
+    gap: var(--sp-4);
+    flex-wrap: wrap;
+  }
+  .social-label {
+    font-family: var(--font-mono);
+    font-size: var(--step--1);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--muted);
+  }
+  .social ul {
+    display: flex;
+    gap: var(--sp-2);
+  }
+  .social a {
+    display: grid;
+    place-items: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    border: 1px solid var(--line-strong);
+    color: var(--paper);
+    transition: color 0.2s, border-color 0.2s, background 0.2s, transform 0.2s;
+  }
+  .social a:hover {
+    color: var(--brand-glow);
+    border-color: var(--brand-lift);
+    background: rgba(123, 47, 181, 0.12);
+    transform: translateY(-2px);
+  }
+
+  @media (max-width: 860px) {
+    .grid {
+      grid-template-columns: 1fr;
+      gap: var(--sp-6);
+    }
+    .visual {
+      position: static;
+      flex-direction: row;
+      align-items: stretch;
+    }
+    .avatar {
+      width: 130px;
+      flex: none;
+    }
+  }
+  @media (max-width: 480px) {
+    .visual {
+      flex-direction: column;
+    }
+    .avatar {
+      width: 100%;
+    }
+  }
+</style>

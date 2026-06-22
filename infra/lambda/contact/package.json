@@ -1,0 +1,7 @@
+{
+  "name": "contact-handler",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "Pluralty contact form Lambda handler",
+  "main": "index.mjs"
+}

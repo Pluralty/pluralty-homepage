@@ -1,0 +1,209 @@
+---
+import Tr from './Tr.astro';
+import Icon from './Icon.astro';
+import { t } from '../i18n';
+const spendOpts = ['0', '1', '2', '3', '4', '5'];
+---
+
+<section class="section" id="contact">
+  <div class="wrap grid">
+    <div class="intro" data-reveal>
+      <span class="eyebrow"><Tr k="contact.eyebrow" /></span>
+      <h2><Tr k="contact.title" as="span" /></h2>
+      <p class="lead"><Tr k="contact.sub" as="span" /></p>
+      <p class="privacy"><Tr k="contact.privacy" as="span" /></p>
+    </div>
+
+    <div class="panel" data-reveal style="--reveal-delay:.08s">
+      <form id="contact-form" novalidate>
+        <!-- Honeypot: hidden from users, ignored by them, filled by bots. -->
+        <div class="hp" aria-hidden="true">
+          <label>Company URL<input type="text" name="company_url" tabindex="-1" autocomplete="off" /></label>
+        </div>
+
+        <div class="row">
+          <div class="field">
+            <label for="cf-name"><Tr k="contact.f.name" /></label>
+            <input id="cf-name" name="name" type="text" autocomplete="name" required />
+            <span class="err" data-err="name" hidden><Tr k="contact.err.name" /></span>
+          </div>
+          <div class="field">
+            <label for="cf-email"><Tr k="contact.f.email" /></label>
+            <input id="cf-email" name="email" type="email" autocomplete="email" required />
+            <span class="err" data-err="email" hidden><Tr k="contact.err.email" /></span>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="field">
+            <label for="cf-company"><Tr k="contact.f.company" /></label>
+            <input id="cf-company" name="company" type="text" autocomplete="organization" />
+          </div>
+          <div class="field">
+            <label for="cf-spend"><Tr k="contact.f.spend" /></label>
+            <select id="cf-spend" name="spend">
+              {
+                spendOpts.map((o) => (
+                  <option value={o} data-i18n={`contact.spend.${o}`} set:html={t(`contact.spend.${o}`)} />
+                ))
+              }
+            </select>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="cf-message"><Tr k="contact.f.message" /></label>
+          <textarea id="cf-message" name="message" rows="4" required></textarea>
+          <span class="err" data-err="message" hidden><Tr k="contact.err.message" /></span>
+        </div>
+
+        <button type="submit" class="btn btn-primary submit" data-submit>
+          <span data-submit-label><Tr k="contact.submit" /></span>
+          <span data-submit-sending hidden><Tr k="contact.sending" /></span>
+          <Icon name="arrow" size={18} />
+        </button>
+
+        <p class="form-error" id="form-error" role="alert" hidden><Tr k="contact.error" as="span" /></p>
+      </form>
+
+      <div class="success" id="form-success" role="status" hidden>
+        <span class="ok"><Icon name="check" size={28} /></span>
+        <h3><Tr k="contact.success.t" /></h3>
+        <p><Tr k="contact.success.d" as="span" /></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  import '../scripts/contact.ts';
+</script>
+
+<style>
+  .grid {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: var(--sp-7);
+    align-items: start;
+  }
+  .intro h2 {
+    font-size: var(--step-4);
+    margin-top: var(--sp-3);
+  }
+  .intro .lead {
+    margin-top: var(--sp-4);
+  }
+  .privacy {
+    margin-top: var(--sp-4);
+    font-size: var(--step--1);
+    color: var(--muted);
+    font-family: var(--font-mono);
+    max-width: 42ch;
+  }
+
+  .panel {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--r-card);
+    padding: var(--sp-6);
+  }
+  .hp {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
+  .row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--sp-4);
+  }
+  .field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: var(--sp-4);
+  }
+  label {
+    font-size: var(--step--1);
+    font-weight: 600;
+    color: var(--paper);
+  }
+  input,
+  select,
+  textarea {
+    background: var(--ink);
+    border: 1px solid var(--line-strong);
+    border-radius: var(--r-input);
+    padding: 12px 14px;
+    color: var(--paper);
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  input:focus,
+  select:focus,
+  textarea:focus {
+    outline: none;
+    border-color: var(--brand-lift);
+    box-shadow: 0 0 0 3px rgba(123, 47, 181, 0.25);
+  }
+  [aria-invalid='true'] {
+    border-color: #ff6b8b;
+  }
+  textarea {
+    resize: vertical;
+    min-height: 110px;
+  }
+  .err {
+    font-size: var(--step--1);
+    color: #ff8fa3;
+  }
+  .submit {
+    width: 100%;
+    justify-content: center;
+    margin-top: var(--sp-2);
+  }
+  .form-error {
+    margin-top: var(--sp-3);
+    color: #ff8fa3;
+    font-size: var(--step--1);
+    text-align: center;
+  }
+  .success {
+    text-align: center;
+    padding: var(--sp-6) var(--sp-4);
+  }
+  .success .ok {
+    display: inline-grid;
+    place-items: center;
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: rgba(123, 47, 181, 0.15);
+    color: var(--brand-glow);
+    border: 1px solid var(--brand-lift);
+    margin-bottom: var(--sp-4);
+  }
+  .success h3 {
+    font-size: var(--step-2);
+  }
+  .success p {
+    margin-top: var(--sp-2);
+    color: var(--muted);
+    max-width: 40ch;
+    margin-inline: auto;
+  }
+
+  @media (max-width: 860px) {
+    .grid {
+      grid-template-columns: 1fr;
+      gap: var(--sp-6);
+    }
+  }
+  @media (max-width: 520px) {
+    .row {
+      grid-template-columns: 1fr;
+      gap: 0;
+    }
+  }
+</style>

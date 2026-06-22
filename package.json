@@ -1,0 +1,23 @@
+{
+  "name": "pluralty-homepage",
+  "type": "module",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "^3.2.1",
+    "@fontsource-variable/jetbrains-mono": "^5.1.1",
+    "@fontsource-variable/outfit": "^5.1.1",
+    "@fontsource-variable/plus-jakarta-sans": "^5.1.1",
+    "astro": "^5.1.0",
+    "sharp": "^0.33.5"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": ["esbuild", "sharp"]
+  }
+}

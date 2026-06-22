@@ -1,0 +1,69 @@
+---
+import Tr from './Tr.astro';
+const metrics = ['m1', 'm2', 'm3', 'm4'];
+---
+
+<section class="trust" aria-label="Outcomes">
+  <div class="wrap strip">
+    {
+      metrics.map((m, i) => (
+        <div class="metric" data-reveal style={`--reveal-delay:${i * 0.06}s`}>
+          <span class="val">
+            <Tr k={`trust.${m}.v`} />
+          </span>
+          <span class="lbl">
+            <Tr k={`trust.${m}.l`} />
+          </span>
+        </div>
+      ))
+    }
+  </div>
+</section>
+
+<style>
+  .trust {
+    border-block: 1px solid var(--line);
+    background: var(--ink-2);
+  }
+  .strip {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--sp-5);
+    padding-block: var(--sp-7);
+  }
+  .metric {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    text-align: left;
+    position: relative;
+    padding-left: var(--sp-4);
+  }
+  .metric::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 6px;
+    bottom: 6px;
+    width: 2px;
+    background: linear-gradient(var(--brand-lift), transparent);
+    border-radius: 2px;
+  }
+  .val {
+    font-family: var(--font-mono);
+    font-size: var(--step-4);
+    font-weight: 700;
+    color: var(--paper);
+    line-height: 1;
+  }
+  .lbl {
+    color: var(--muted);
+    font-size: var(--step--1);
+  }
+  @media (max-width: 720px) {
+    .strip {
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--sp-6) var(--sp-5);
+    }
+  }
+</style>

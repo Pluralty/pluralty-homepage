@@ -1,0 +1,117 @@
+---
+import Tr from './Tr.astro';
+import Icon from './Icon.astro';
+const points = ['p1', 'p2', 'p3'];
+---
+
+<section class="assess" id="assessment">
+  <div class="wrap inner" data-reveal>
+    <div class="left">
+      <span class="eyebrow light"><Tr k="assess.eyebrow" /></span>
+      <h2>
+        <Tr k="assess.title" as="span" />
+        <span class="free-pill"><Tr k="assess.free" /></span>
+      </h2>
+      <p><Tr k="assess.body" as="span" /></p>
+      <ul class="points">
+        {
+          points.map((p) => (
+            <li>
+              <Icon name="check" size={20} />
+              <Tr k={`assess.${p}`} />
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+    <div class="right">
+      <a class="btn cta" href="#contact">
+        <Tr k="assess.cta" /><Icon name="arrow" size={18} />
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .assess {
+    background:
+      radial-gradient(90% 120% at 100% 0%, var(--brand-lift), transparent 55%),
+      linear-gradient(135deg, var(--brand), #2c0046);
+    color: #fff;
+    padding-block: var(--sp-9);
+  }
+  .inner {
+    display: grid;
+    grid-template-columns: 1.4fr 0.6fr;
+    align-items: center;
+    gap: var(--sp-7);
+  }
+  .eyebrow.light {
+    color: #e8d4ff;
+  }
+  .left h2 {
+    font-size: var(--step-4);
+    margin-top: var(--sp-3);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--sp-3);
+  }
+  .free-pill {
+    font-family: var(--font-mono);
+    font-size: var(--step-1);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    background: #fff;
+    color: var(--brand);
+    padding: 4px 16px;
+    border-radius: var(--r-pill);
+    transform: rotate(-3deg);
+    font-weight: 700;
+  }
+  .left p {
+    margin-top: var(--sp-4);
+    max-width: 56ch;
+    color: #f0e6fb;
+    font-size: var(--step-1);
+  }
+  .points {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--sp-4) var(--sp-6);
+    margin-top: var(--sp-5);
+  }
+  .points li {
+    display: flex;
+    align-items: center;
+    gap: var(--sp-2);
+    color: #fff;
+    font-weight: 600;
+  }
+  .points :global(svg) {
+    color: #e8d4ff;
+  }
+  .right {
+    display: flex;
+    justify-content: flex-end;
+  }
+  .cta {
+    background: #fff;
+    color: var(--brand);
+    padding: 16px 28px;
+    font-size: var(--step-1);
+    box-shadow: 0 18px 50px -18px rgba(0, 0, 0, 0.6);
+  }
+  .cta:hover {
+    background: #f0e6fb;
+  }
+  @media (max-width: 860px) {
+    .inner {
+      grid-template-columns: 1fr;
+      gap: var(--sp-6);
+    }
+    .right {
+      justify-content: flex-start;
+    }
+  }
+</style>

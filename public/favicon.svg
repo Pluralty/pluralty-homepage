@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" role="img" aria-label="Pluralty">
+  <!-- Ring -->
+  <circle cx="56" cy="44" r="30" fill="none" stroke="#4B0076" stroke-width="14"/>
+  <!-- Plug / port stem: the connection motif from the isologo -->
+  <path d="M42 44 H30 a8 8 0 0 0 -8 8 V86 a4 4 0 0 0 4 4 H40 a4 4 0 0 0 4 -4 Z" fill="#4B0076"/>
+</svg>

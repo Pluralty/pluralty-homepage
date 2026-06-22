@@ -1,0 +1,169 @@
+---
+import logo from '../assets/isologotipo-blanco.webp';
+import Tr from './Tr.astro';
+import LangToggle from './LangToggle.astro';
+---
+
+<header class="nav" id="site-nav">
+  <div class="wrap nav-inner">
+    <a href="#top" class="brand" aria-label="Pluralty">
+      <img src={logo.src} alt="Pluralty" width="150" height="34" />
+    </a>
+
+    <nav class="links" aria-label="Primary">
+      <a href="#services"><Tr k="nav.services" /></a>
+      <a href="#cases"><Tr k="nav.cases" /></a>
+      <a href="#founder"><Tr k="nav.founder" /></a>
+      <a href="#contact"><Tr k="nav.contact" /></a>
+    </nav>
+
+    <div class="actions">
+      <LangToggle />
+      <a class="portal" href="https://pluralty.odoo.com/" target="_blank" rel="noopener">
+        <Tr k="nav.portal" />
+      </a>
+      <a class="btn btn-primary nav-cta" href="#contact"><Tr k="nav.cta" /></a>
+      <button type="button" class="burger" aria-label="Menu" aria-expanded="false" data-burger>
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+
+  <div class="mobile" data-mobile hidden>
+    <a href="#services"><Tr k="nav.services" /></a>
+    <a href="#cases"><Tr k="nav.cases" /></a>
+    <a href="#founder"><Tr k="nav.founder" /></a>
+    <a href="#contact"><Tr k="nav.contact" /></a>
+    <a href="https://pluralty.odoo.com/" target="_blank" rel="noopener"><Tr k="nav.portal" /></a>
+    <a class="btn btn-primary" href="#contact"><Tr k="nav.cta" /></a>
+  </div>
+</header>
+
+<script>
+  const burger = document.querySelector('[data-burger]');
+  const mobile = document.querySelector('[data-mobile]') as HTMLElement | null;
+  const nav = document.getElementById('site-nav');
+
+  burger?.addEventListener('click', () => {
+    const open = burger.getAttribute('aria-expanded') === 'true';
+    burger.setAttribute('aria-expanded', String(!open));
+    if (mobile) mobile.hidden = open;
+  });
+
+  mobile?.querySelectorAll('a').forEach((a) =>
+    a.addEventListener('click', () => {
+      burger?.setAttribute('aria-expanded', 'false');
+      mobile.hidden = true;
+    })
+  );
+
+  // Subtle solid background once scrolled.
+  const onScroll = () => nav?.classList.toggle('scrolled', window.scrollY > 12);
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
+</script>
+
+<style>
+  .nav {
+    position: fixed;
+    inset: 0 0 auto 0;
+    z-index: 50;
+    height: 72px;
+    display: flex;
+    align-items: center;
+    transition: background-color 0.3s, border-color 0.3s, backdrop-filter 0.3s;
+    border-bottom: 1px solid transparent;
+  }
+  .nav.scrolled {
+    background: rgba(14, 10, 20, 0.82);
+    backdrop-filter: blur(14px);
+    border-bottom-color: var(--line);
+  }
+  .nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: min(100% - 2 * var(--sp-5), var(--content));
+    gap: var(--sp-5);
+  }
+  .brand img {
+    height: 32px;
+    width: auto;
+  }
+  .links {
+    display: flex;
+    gap: var(--sp-5);
+    margin-inline: auto;
+  }
+  .links a {
+    color: var(--muted);
+    font-size: var(--step-0);
+    transition: color 0.2s;
+  }
+  .links a:hover {
+    color: var(--paper);
+  }
+  .actions {
+    display: flex;
+    align-items: center;
+    gap: var(--sp-4);
+  }
+  .portal {
+    color: var(--paper);
+    font-size: var(--step-0);
+    white-space: nowrap;
+    transition: color 0.2s;
+  }
+  .portal:hover {
+    color: var(--brand-glow);
+  }
+  .nav-cta {
+    padding: 9px 18px;
+  }
+  .burger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: 0;
+    cursor: pointer;
+    padding: 6px;
+  }
+  .burger span {
+    width: 24px;
+    height: 2px;
+    background: var(--paper);
+    border-radius: 2px;
+  }
+  .mobile {
+    position: absolute;
+    top: 72px;
+    left: 0;
+    right: 0;
+    background: rgba(14, 10, 20, 0.97);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--line);
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-4);
+    padding: var(--sp-5);
+  }
+  .mobile a {
+    color: var(--paper);
+    font-size: var(--step-1);
+  }
+  .mobile .btn {
+    justify-content: center;
+  }
+
+  @media (max-width: 900px) {
+    .links,
+    .portal,
+    .nav-cta {
+      display: none;
+    }
+    .burger {
+      display: flex;
+    }
+  }
+</style>

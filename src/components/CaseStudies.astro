@@ -1,0 +1,61 @@
+---
+import Tr from './Tr.astro';
+import CaseStudyCard from './CaseStudyCard.astro';
+
+const cases = [
+  {
+    id: 'stabled',
+    name: 'stabled.co',
+    display: 'Stabled',
+    url: 'https://stabled.co',
+    stack: ['AWS Organizations', 'ALB', 'ECS', 'RDS', 'GitHub Actions', 'Terraform'],
+  },
+  {
+    id: 'tradeprentice',
+    name: 'tradeprentice.io',
+    display: 'Tradeprentice',
+    url: 'https://tradeprentice.io',
+    stack: ['AWS Organizations', 'ALB', 'ECS', 'RDS', 'GitHub Actions', 'Terraform'],
+  },
+  {
+    id: 'muchticket',
+    name: 'muchticket.com',
+    display: 'Muchticket',
+    url: 'https://www.muchticket.com',
+    stack: ['AWS Organizations', 'ALB', 'ECS', 'RDS', 'Terraform'],
+  },
+];
+---
+
+<section class="section" id="cases">
+  <div class="wrap">
+    <header class="head" data-reveal>
+      <span class="eyebrow"><Tr k="cases.eyebrow" /></span>
+      <h2><Tr k="cases.title" as="span" /></h2>
+      <p class="lead"><Tr k="cases.sub" as="span" /></p>
+    </header>
+
+    <div class="list">
+      {cases.map((c, i) => <CaseStudyCard {...c} index={i} />)}
+    </div>
+  </div>
+</section>
+
+<style>
+  .head {
+    max-width: 48rem;
+    margin-bottom: var(--sp-7);
+  }
+  .head h2 {
+    font-size: var(--step-4);
+    margin-top: var(--sp-3);
+  }
+  .head .lead {
+    margin-top: var(--sp-4);
+  }
+  .list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-4);
+  }
+</style>

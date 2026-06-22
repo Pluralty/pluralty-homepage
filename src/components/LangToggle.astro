@@ -1,0 +1,40 @@
+---
+// Two-state language switch. Server renders English active; the client script
+// updates aria-pressed and persists the choice. Works without JS as a no-op.
+---
+
+<div class="lang" role="group" aria-label="Language">
+  <button type="button" data-lang-btn="en" aria-pressed="true">EN</button>
+  <span aria-hidden="true" class="div">/</span>
+  <button type="button" data-lang-btn="es" aria-pressed="false">ES</button>
+</div>
+
+<style>
+  .lang {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-family: var(--font-mono);
+    font-size: var(--step--1);
+  }
+  .lang button {
+    background: none;
+    border: 0;
+    padding: 4px 6px;
+    cursor: pointer;
+    color: var(--muted);
+    letter-spacing: 0.04em;
+    border-radius: 6px;
+    transition: color 0.2s;
+  }
+  .lang button[aria-pressed='true'] {
+    color: var(--paper);
+    font-weight: 700;
+  }
+  .lang button:hover {
+    color: var(--brand-glow);
+  }
+  .div {
+    color: var(--line-strong);
+  }
+</style>

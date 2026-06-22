@@ -1,0 +1,146 @@
+---
+import Tr from './Tr.astro';
+import Icon from './Icon.astro';
+
+const cards = [
+  { k: 's1', icon: 'gauge', cls: 'feature' },
+  { k: 's2', icon: 'coins', cls: '' },
+  { k: 's3', icon: 'refresh', cls: '' },
+  { k: 's4', icon: 'infinity', cls: '' },
+  { k: 's5', icon: 'shield', cls: 'wide' },
+];
+---
+
+<section class="section" id="services">
+  <div class="wrap">
+    <header class="head" data-reveal>
+      <span class="eyebrow"><Tr k="services.eyebrow" /></span>
+      <h2><Tr k="services.title" as="span" /></h2>
+      <p class="lead"><Tr k="services.sub" as="span" /></p>
+    </header>
+
+    <div class="bento">
+      {
+        cards.map((c, i) => (
+          <article class={`card ${c.cls}`} data-reveal style={`--reveal-delay:${i * 0.05}s`}>
+            <span class="ic">
+              <Icon name={c.icon} size={26} />
+            </span>
+            <h3>
+              <Tr k={`services.${c.k}.t`} />
+            </h3>
+            <p>
+              <Tr k={`services.${c.k}.d`} as="span" />
+            </p>
+          </article>
+        ))
+      }
+    </div>
+
+    <p class="mode" data-reveal><Tr k="services.mode" as="span" /></p>
+  </div>
+</section>
+
+<style>
+  .head {
+    max-width: 46rem;
+    margin-bottom: var(--sp-7);
+  }
+  .head h2 {
+    font-size: var(--step-4);
+    margin-top: var(--sp-3);
+  }
+  .head .lead {
+    margin-top: var(--sp-4);
+  }
+
+  .bento {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: var(--sp-4);
+  }
+  .card {
+    grid-column: span 2;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--r-card);
+    padding: var(--sp-6);
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-3);
+    transition: transform var(--dur) var(--ease), border-color 0.3s, background 0.3s;
+  }
+  .card:hover {
+    transform: translateY(-4px);
+    border-color: var(--line-strong);
+    background: var(--surface-2);
+  }
+  .card.feature {
+    grid-column: span 3;
+    background:
+      radial-gradient(120% 120% at 0% 0%, rgba(75, 0, 118, 0.55), transparent 60%),
+      var(--surface);
+  }
+  .card.feature h3 {
+    font-size: var(--step-2);
+  }
+  .card:nth-child(2) {
+    grid-column: span 3;
+  }
+  .card.wide {
+    grid-column: span 6;
+    background:
+      radial-gradient(80% 160% at 100% 0%, rgba(123, 47, 181, 0.28), transparent 60%),
+      var(--surface);
+  }
+  .ic {
+    display: inline-grid;
+    place-items: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    color: var(--brand-glow);
+    background: rgba(123, 47, 181, 0.14);
+    border: 1px solid var(--line);
+  }
+  .card h3 {
+    font-size: var(--step-1);
+  }
+  .card p {
+    color: var(--muted);
+    font-size: var(--step-0);
+    max-width: 46ch;
+  }
+  .mode {
+    margin-top: var(--sp-6);
+    text-align: center;
+    color: var(--muted);
+    font-family: var(--font-mono);
+    font-size: var(--step--1);
+    max-width: 60ch;
+    margin-inline: auto;
+  }
+
+  @media (max-width: 860px) {
+    .bento {
+      grid-template-columns: 1fr 1fr;
+    }
+    .card,
+    .card.feature,
+    .card:nth-child(2),
+    .card.wide {
+      grid-column: span 2;
+    }
+  }
+  @media (max-width: 560px) {
+    .bento {
+      grid-template-columns: 1fr;
+    }
+    .card,
+    .card.feature,
+    .card:nth-child(2),
+    .card.wide {
+      grid-column: span 1;
+    }
+  }
+</style>
