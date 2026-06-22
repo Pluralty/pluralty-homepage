@@ -55,6 +55,14 @@ const es: Record<string, string> = {
   'services.mode':
     'Trabajamos como una extensión de tu equipo: abono mensual o proyecto puntual, siempre con documentación que te queda.',
 
+  // Problem
+  'problem.eyebrow': 'El problema',
+  'problem.title': '¿Sabías que podrías estar pagando hasta un 60% de más en cloud sin saberlo?',
+  'problem.p1': 'Muchas empresas crecen sobre infraestructura cloud que funciona, pero no necesariamente está optimizada.',
+  'problem.p2': 'Con el tiempo aparecen recursos sobredimensionados, configuraciones costosas, riesgos de seguridad y decisiones técnicas que nunca se volvieron a revisar.',
+  'problem.result.label': 'El resultado',
+  'problem.result.text': 'Una factura cloud que crece, servicios que pueden volverse inestables y equipos que empiezan a resolver problemas de infraestructura sobre la marcha.',
+
   // Assessment
   'assess.eyebrow': 'Sin costo, sin compromiso',
   'assess.title': 'Cloud Optimization Assessment',

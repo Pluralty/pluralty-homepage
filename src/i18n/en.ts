@@ -56,6 +56,14 @@ const en: Record<string, string> = {
   'services.mode':
     'We work as an extension of your team: monthly retainer or focused project, always with documentation you keep.',
 
+  // Problem
+  'problem.eyebrow': 'The problem',
+  'problem.title': 'Did you know you could be overpaying for cloud by up to 60% without realizing it?',
+  'problem.p1': 'Many companies grow on cloud infrastructure that works — but isn\'t necessarily optimized.',
+  'problem.p2': 'Over time, oversized resources appear, costly configurations accumulate, security risks build up, and technical decisions are never revisited.',
+  'problem.result.label': 'The result',
+  'problem.result.text': 'A growing cloud bill, services that can become unstable, and teams starting to solve infrastructure problems on the fly.',
+
   // Assessment
   'assess.eyebrow': 'No cost, no commitment',
   'assess.title': 'Cloud Optimization Assessment',
