@@ -38,6 +38,7 @@ Hay varios casos de exito en la ppt, pero solo quiero poner los que te aclaro en
 - PGSA (no tengo web), este no esta tampoco en el PDF. Aca desplegamos workspace (AWS Workspace) para escritorios remotos en AWS para la empresa.
 Ahora que lo pienso, podemos configurar todos los perfiles de cada cuenta de cada cliente, para que vos entres y revises bien todos los servicios desplegado y con eso capaz puedas mejorar el detalle a nivel marketinero... eso lo prometo hacer.
 TODO: Configurar los profiles de todos los clientes asi vos podes entrar y revisar servicios, configuraciones, landing zone, etc para que puedas tener mas detalle de que se hizo, que se desplego, como, y poder dar mas definicion a cada caso de exito.
+PARA MAS DETALLE de los casos de exito esta el archivo CASOS_DE_EXITOS.md
 
 # Partnerships
 Te cuento que tengo un partnership con TD Synnex (http://tdsynnex.com/), esto es algo super importante para mencionar, porque gracias a este partnership, podemos mencionar que podemos ofrecer comercialmente muchos beneficios y ventajas en los principales proveedores de nube.
