@@ -4,20 +4,18 @@ import Tr from '../../components/Tr.astro';
 import { t } from '../../i18n';
 
 const stack = [
-  { label: 'AWS Organizations', desc: 'Multi-account isolation' },
-  { label: 'ECS Fargate', desc: 'Serverless containers' },
-  { label: 'Application Load Balancer', desc: 'Traffic distribution' },
-  { label: 'Aurora PostgreSQL Serverless v2', desc: 'Auto-scaling managed database' },
-  { label: 'ECR', desc: 'Container registry' },
-  { label: 'GitHub Actions', desc: 'CI/CD pipeline' },
-  { label: 'Terraform', desc: 'Infrastructure as code' },
-  { label: 'VPC + Private subnets', desc: 'Network isolation' },
+  { label: 'Amazon WorkSpaces', desc: 'Managed cloud desktops (AUTO_STOP)' },
+  { label: 'AWS Directory Service', desc: 'Domain identity & centralized auth' },
+  { label: 'AWS Backup', desc: 'Daily snapshots · 365-day retention' },
+  { label: 'CloudWatch', desc: 'Monitoring & alerting' },
+  { label: 'AWS Systems Manager', desc: 'Remote management & patching' },
+  { label: 'AWS Budgets', desc: 'Cost threshold alerts' },
 ];
 ---
 
 <CaseLayout
-  title={t('case.stabled.meta.title')}
-  description={t('case.stabled.meta.desc')}
+  title={t('case.pgsa.meta.title')}
+  description={t('case.pgsa.meta.desc')}
 >
 
   <!-- ─── Hero ──────────────────────────────────────────────────── -->
@@ -25,20 +23,18 @@ const stack = [
     <div class="wrap hero-inner">
       <div class="hero-copy" data-reveal>
         <div class="hero-meta">
-          <span class="hero-logo">S</span>
-          <span class="hero-tag"><Tr k="case.stabled.tag" /></span>
+          <span class="hero-logo">P</span>
+          <span class="hero-tag"><Tr k="case.pgsa.tag" /></span>
         </div>
-        <h1>Stabled</h1>
-        <p class="hero-tagline"><Tr k="case.stabled.tagline" /></p>
-        <a class="hero-url" href="https://stabled.co" target="_blank" rel="noopener">
-          stabled.co
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
-            <path d="M14 5h5v5M19 5l-8 8M11 5H7a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-4"/>
-          </svg>
-        </a>
+        <h1>PGSA</h1>
+        <p class="hero-tagline"><Tr k="case.pgsa.tagline" /></p>
+        <span class="hero-badge">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          No public website · Privacy protected
+        </span>
       </div>
       <div class="hero-art" aria-hidden="true" data-reveal>
-        <div class="big-logo">S</div>
+        <div class="big-logo">P</div>
         <div class="glow-ring"></div>
       </div>
     </div>
@@ -48,20 +44,20 @@ const stack = [
   <div class="metrics-band">
     <div class="wrap metrics-inner">
       <div class="metric" data-reveal>
-        <span class="mv"><Tr k="case.stabled.r1.v" /></span>
-        <span class="ml"><Tr k="case.stabled.r1.l" /></span>
+        <span class="mv"><Tr k="case.pgsa.r1.v" /></span>
+        <span class="ml"><Tr k="case.pgsa.r1.l" /></span>
       </div>
       <div class="metric" data-reveal>
-        <span class="mv"><Tr k="case.stabled.r2.v" /></span>
-        <span class="ml"><Tr k="case.stabled.r2.l" /></span>
+        <span class="mv"><Tr k="case.pgsa.r2.v" /></span>
+        <span class="ml"><Tr k="case.pgsa.r2.l" /></span>
       </div>
       <div class="metric" data-reveal>
-        <span class="mv"><Tr k="case.stabled.r3.v" /></span>
-        <span class="ml"><Tr k="case.stabled.r3.l" /></span>
+        <span class="mv"><Tr k="case.pgsa.r3.v" /></span>
+        <span class="ml"><Tr k="case.pgsa.r3.l" /></span>
       </div>
       <div class="metric" data-reveal>
-        <span class="mv"><Tr k="case.stabled.r4.v" /></span>
-        <span class="ml"><Tr k="case.stabled.r4.l" /></span>
+        <span class="mv"><Tr k="case.pgsa.r4.v" /></span>
+        <span class="ml"><Tr k="case.pgsa.r4.l" /></span>
       </div>
     </div>
   </div>
@@ -70,12 +66,12 @@ const stack = [
   <section class="section" id="challenge">
     <div class="wrap two-col">
       <div class="col-label" data-reveal>
-        <span class="eyebrow"><Tr k="case.stabled.challenge.label" /></span>
+        <span class="eyebrow"><Tr k="case.pgsa.challenge.label" /></span>
       </div>
       <div class="col-content" data-reveal>
-        <h2><Tr k="case.stabled.challenge.title" /></h2>
-        <p><Tr k="case.stabled.challenge.p1" /></p>
-        <p><Tr k="case.stabled.challenge.p2" /></p>
+        <h2><Tr k="case.pgsa.challenge.title" /></h2>
+        <p><Tr k="case.pgsa.challenge.p1" /></p>
+        <p><Tr k="case.pgsa.challenge.p2" /></p>
       </div>
     </div>
   </section>
@@ -84,64 +80,72 @@ const stack = [
   <section class="section alt" id="solution">
     <div class="wrap two-col">
       <div class="col-label" data-reveal>
-        <span class="eyebrow"><Tr k="case.stabled.solution.label" /></span>
+        <span class="eyebrow"><Tr k="case.pgsa.solution.label" /></span>
       </div>
       <div class="col-content" data-reveal>
-        <h2><Tr k="case.stabled.solution.title" /></h2>
-
+        <h2><Tr k="case.pgsa.solution.title" /></h2>
         <div class="solution-step">
           <span class="step-num">01</span>
-          <p><Tr k="case.stabled.solution.p1" /></p>
+          <p><Tr k="case.pgsa.solution.p1" /></p>
         </div>
         <div class="solution-step">
           <span class="step-num">02</span>
-          <p><Tr k="case.stabled.solution.p2" /></p>
+          <p><Tr k="case.pgsa.solution.p2" /></p>
         </div>
         <div class="solution-step">
           <span class="step-num">03</span>
-          <p><Tr k="case.stabled.solution.p3" /></p>
+          <p><Tr k="case.pgsa.solution.p3" /></p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ─── Architecture diagram (ASCII-style) ───────────────────── -->
+  <!-- ─── Architecture diagram ─────────────────────────────────── -->
   <section class="section arch-section">
     <div class="wrap">
       <div class="arch-card" data-reveal>
         <div class="arch-row">
-          <div class="arch-box aws-org">
-            <span class="arch-label">AWS Organizations</span>
-            <div class="arch-accounts">
-              <div class="arch-account prod">
-                <span>Production</span>
+          <div class="arch-box aws-box">
+            <span class="arch-label">AWS Account — Single Region</span>
+            <div class="arch-identity">
+              <div class="identity-card">
+                <span class="identity-name">AWS Directory Service</span>
                 <div class="arch-services">
-                  <span class="svc">ALB</span>
-                  <span class="svc">ECS: landing</span>
-                  <span class="svc">ECS: app</span>
-                  <span class="svc">ECS: api</span>
-                  <span class="svc">Aurora Serverless v2</span>
-                  <span class="svc">ECR</span>
+                  <span class="svc">Domain Auth</span>
+                  <span class="svc">Centralized policies</span>
+                  <span class="svc">Domain-joined desktops</span>
                 </div>
               </div>
-              <div class="arch-account staging">
-                <span>Staging</span>
+            </div>
+            <div class="arch-grid">
+              <div class="arch-tile">
+                <span class="tile-name">Amazon WorkSpaces</span>
                 <div class="arch-services">
-                  <span class="svc">ECS Fargate</span>
-                  <span class="svc">RDS</span>
+                  <span class="svc">16 desktops</span>
+                  <span class="svc">Windows 10/11</span>
+                  <span class="svc">Custom corporate image</span>
+                  <span class="svc">AUTO_STOP billing</span>
                 </div>
               </div>
-              <div class="arch-account tooling">
-                <span>Tooling</span>
+              <div class="arch-tile">
+                <span class="tile-name">AWS Backup</span>
                 <div class="arch-services">
-                  <span class="svc">GitHub Actions</span>
-                  <span class="svc">ECR shared</span>
+                  <span class="svc">Daily snapshots</span>
+                  <span class="svc">365-day retention</span>
+                </div>
+              </div>
+              <div class="arch-tile">
+                <span class="tile-name">Ops & Visibility</span>
+                <div class="arch-services">
+                  <span class="svc">CloudWatch</span>
+                  <span class="svc">Systems Manager</span>
+                  <span class="svc">AWS Budgets</span>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <p class="arch-caption"><Tr k="case.stabled.arch.caption" /></p>
+        <p class="arch-caption"><Tr k="case.pgsa.arch.caption" /></p>
       </div>
     </div>
   </section>
@@ -151,7 +155,7 @@ const stack = [
     <div class="wrap">
       <header class="stack-head" data-reveal>
         <span class="eyebrow"><Tr k="case.stack.eyebrow" /></span>
-        <h2><Tr k="case.stack.title" /></h2>
+        <h2><Tr k="case.pgsa.stack.title" /></h2>
       </header>
       <ul class="stack-grid">
         {stack.map((s, i) => (
@@ -168,43 +172,27 @@ const stack = [
   <section class="section alt" id="results">
     <div class="wrap">
       <header class="results-head" data-reveal>
-        <span class="eyebrow"><Tr k="case.stabled.results.label" /></span>
-        <h2><Tr k="case.stabled.results.title" /></h2>
+        <span class="eyebrow"><Tr k="case.pgsa.results.label" /></span>
+        <h2><Tr k="case.pgsa.results.title" /></h2>
       </header>
       <div class="results-grid">
         <div class="result-card" data-reveal>
-          <span class="rv"><Tr k="case.stabled.r1.v" /></span>
-          <span class="rl"><Tr k="case.stabled.r1.l" /></span>
+          <span class="rv"><Tr k="case.pgsa.r1.v" /></span>
+          <span class="rl"><Tr k="case.pgsa.r1.l" /></span>
         </div>
         <div class="result-card" data-reveal>
-          <span class="rv"><Tr k="case.stabled.r2.v" /></span>
-          <span class="rl"><Tr k="case.stabled.r2.l" /></span>
+          <span class="rv"><Tr k="case.pgsa.r2.v" /></span>
+          <span class="rl"><Tr k="case.pgsa.r2.l" /></span>
         </div>
         <div class="result-card" data-reveal>
-          <span class="rv"><Tr k="case.stabled.r3.v" /></span>
-          <span class="rl"><Tr k="case.stabled.r3.l" /></span>
+          <span class="rv"><Tr k="case.pgsa.r3.v" /></span>
+          <span class="rl"><Tr k="case.pgsa.r3.l" /></span>
         </div>
         <div class="result-card" data-reveal>
-          <span class="rv"><Tr k="case.stabled.r4.v" /></span>
-          <span class="rl"><Tr k="case.stabled.r4.l" /></span>
+          <span class="rv"><Tr k="case.pgsa.r4.v" /></span>
+          <span class="rl"><Tr k="case.pgsa.r4.l" /></span>
         </div>
       </div>
-    </div>
-  </section>
-
-  <!-- ─── Testimonial ────────────────────────────────────────────── -->
-  <section class="section quote-section">
-    <div class="wrap">
-      <blockquote class="quote-card" data-reveal>
-        <p class="qt"><Tr k="case.stabled.quote" /></p>
-        <footer class="qf">
-          <div class="qa">N</div>
-          <div class="qm">
-            <span class="qn"><Tr k="case.stabled.quote.name" /></span>
-            <span class="qr"><Tr k="case.stabled.quote.role" /></span>
-          </div>
-        </footer>
-      </blockquote>
     </div>
   </section>
 
@@ -212,12 +200,12 @@ const stack = [
   <section class="cta-band">
     <div class="wrap cta-inner" data-reveal>
       <div class="cta-copy">
-        <span class="eyebrow"><Tr k="case.stabled.cta.label" /></span>
-        <h2><Tr k="case.stabled.cta.title" /></h2>
-        <p><Tr k="case.stabled.cta.sub" /></p>
+        <span class="eyebrow"><Tr k="case.pgsa.cta.label" /></span>
+        <h2><Tr k="case.pgsa.cta.title" /></h2>
+        <p><Tr k="case.pgsa.cta.sub" /></p>
       </div>
       <a class="btn btn-primary cta-btn" href="/#contact">
-        <Tr k="case.stabled.cta.btn" />
+        <Tr k="case.pgsa.cta.btn" />
       </a>
     </div>
   </section>
@@ -225,13 +213,10 @@ const stack = [
 </CaseLayout>
 
 <style>
-  /* ── Wrap ── */
   .wrap {
     width: min(100% - 2 * var(--sp-5), var(--content));
     margin-inline: auto;
   }
-
-  /* ── Hero ── */
   .hero {
     background: var(--ink);
     padding-block: clamp(80px, 16vh, 140px) clamp(60px, 10vh, 100px);
@@ -292,22 +277,17 @@ const stack = [
     max-width: 48ch;
     line-height: 1.6;
   }
-  .hero-url {
+  .hero-badge {
     display: inline-flex;
     align-items: center;
     gap: 6px;
     margin-top: var(--sp-5);
     font-family: var(--font-mono);
     font-size: var(--step--1);
-    color: var(--brand-glow);
-    border: 1px solid rgba(157,95,214,0.3);
+    color: var(--muted);
+    border: 1px solid var(--line);
     padding: 6px 14px;
     border-radius: var(--r-pill);
-    transition: background 0.2s, border-color 0.2s;
-  }
-  .hero-url:hover {
-    background: rgba(157,95,214,0.08);
-    border-color: rgba(157,95,214,0.6);
   }
   .hero-art {
     position: relative;
@@ -337,8 +317,6 @@ const stack = [
     border: 1px solid rgba(123,47,181,0.15);
     pointer-events: none;
   }
-
-  /* ── Metrics band ── */
   .metrics-band {
     border-block: 1px solid var(--line);
     background: var(--ink-2);
@@ -355,9 +333,7 @@ const stack = [
     padding: var(--sp-7) var(--sp-6);
     border-right: 1px solid var(--line);
   }
-  .metric:last-child {
-    border-right: 0;
-  }
+  .metric:last-child { border-right: 0; }
   .mv {
     font-family: var(--font-display);
     font-weight: 700;
@@ -372,26 +348,18 @@ const stack = [
     text-transform: uppercase;
     letter-spacing: 0.08em;
   }
-
-  /* ── Section base ── */
   .section {
     padding-block: var(--section-y);
     background: var(--ink);
   }
-  .section.alt {
-    background: var(--ink-2);
-  }
-
-  /* ── Two-col text layout ── */
+  .section.alt { background: var(--ink-2); }
   .two-col {
     display: grid;
     grid-template-columns: 220px 1fr;
     gap: var(--sp-8);
     align-items: start;
   }
-  .col-label {
-    padding-top: 6px;
-  }
+  .col-label { padding-top: 6px; }
   .col-content h2 {
     font-size: var(--step-3);
     margin-bottom: var(--sp-6);
@@ -402,11 +370,7 @@ const stack = [
     max-width: 68ch;
     margin-bottom: var(--sp-5);
   }
-  .col-content p:last-child {
-    margin-bottom: 0;
-  }
-
-  /* ── Solution steps ── */
+  .col-content p:last-child { margin-bottom: 0; }
   .solution-step {
     display: grid;
     grid-template-columns: 40px 1fr;
@@ -414,9 +378,7 @@ const stack = [
     margin-bottom: var(--sp-6);
     align-items: start;
   }
-  .solution-step:last-child {
-    margin-bottom: 0;
-  }
+  .solution-step:last-child { margin-bottom: 0; }
   .step-num {
     font-family: var(--font-mono);
     font-size: var(--step--1);
@@ -424,14 +386,10 @@ const stack = [
     padding-top: 4px;
     letter-spacing: 0.04em;
   }
-  .solution-step p {
-    margin-bottom: 0;
-  }
+  .solution-step p { margin-bottom: 0; }
 
-  /* ── Architecture diagram ── */
-  .arch-section {
-    border-block: 1px solid var(--line);
-  }
+  /* ── Architecture ── */
+  .arch-section { border-block: 1px solid var(--line); }
   .arch-card {
     background: var(--surface);
     border: 1px solid var(--line);
@@ -439,10 +397,8 @@ const stack = [
     padding: var(--sp-7);
     overflow-x: auto;
   }
-  .arch-row {
-    min-width: 600px;
-  }
-  .aws-org {
+  .arch-row { min-width: 580px; }
+  .aws-box {
     border: 1px dashed rgba(123,47,181,0.4);
     border-radius: 12px;
     padding: var(--sp-5);
@@ -456,31 +412,44 @@ const stack = [
     display: block;
     margin-bottom: var(--sp-4);
   }
-  .arch-accounts {
+  .arch-identity {
+    margin-bottom: var(--sp-4);
+  }
+  .identity-card {
+    background: rgba(123,47,181,0.08);
+    border: 1px solid rgba(123,47,181,0.3);
+    border-radius: 10px;
+    padding: var(--sp-4) var(--sp-5);
+    display: flex;
+    align-items: center;
+    gap: var(--sp-5);
+    flex-wrap: wrap;
+  }
+  .identity-name {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: var(--step-0);
+    color: var(--brand-glow);
+    white-space: nowrap;
+  }
+  .arch-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: var(--sp-4);
   }
-  .arch-account {
+  .arch-tile {
+    background: var(--ink);
     border: 1px solid var(--line-strong);
     border-radius: 10px;
     padding: var(--sp-4);
-    background: var(--ink);
   }
-  .arch-account span {
+  .tile-name {
     display: block;
-    font-family: var(--font-mono);
-    font-size: var(--step--1);
-    color: var(--muted);
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: var(--step-0);
+    color: var(--paper);
     margin-bottom: var(--sp-3);
-    letter-spacing: 0.04em;
-  }
-  .arch-account.prod {
-    border-color: rgba(123,47,181,0.5);
-    background: rgba(123,47,181,0.05);
-  }
-  .arch-account.prod > span {
-    color: var(--brand-glow);
   }
   .arch-services {
     display: flex;
@@ -505,10 +474,7 @@ const stack = [
     border-top: 1px solid var(--line);
   }
 
-  /* ── Stack grid ── */
-  .stack-head {
-    margin-bottom: var(--sp-7);
-  }
+  .stack-head { margin-bottom: var(--sp-7); }
   .stack-head h2 {
     font-size: var(--step-3);
     margin-top: var(--sp-3);
@@ -544,10 +510,7 @@ const stack = [
     font-family: var(--font-mono);
   }
 
-  /* ── Results grid ── */
-  .results-head {
-    margin-bottom: var(--sp-7);
-  }
+  .results-head { margin-bottom: var(--sp-7); }
   .results-head h2 {
     font-size: var(--step-3);
     margin-top: var(--sp-3);
@@ -567,9 +530,7 @@ const stack = [
     gap: var(--sp-2);
     transition: border-color 0.2s;
   }
-  .result-card:hover {
-    border-color: rgba(123,47,181,0.5);
-  }
+  .result-card:hover { border-color: rgba(123,47,181,0.5); }
   .rv {
     font-family: var(--font-display);
     font-weight: 700;
@@ -587,63 +548,6 @@ const stack = [
     line-height: 1.4;
   }
 
-  /* ── Testimonial quote ── */
-  .quote-section {
-    background: var(--ink-2);
-  }
-  .quote-card {
-    max-width: 780px;
-    margin: 0 auto;
-    padding: var(--sp-8) var(--sp-7);
-    background: var(--surface);
-    border: 1px solid var(--line);
-    border-left: 4px solid var(--brand);
-    border-radius: var(--r-card);
-  }
-  .qt {
-    font-size: var(--step-1);
-    color: var(--paper);
-    line-height: 1.7;
-    font-style: italic;
-    margin-bottom: var(--sp-6);
-  }
-  .qf {
-    display: flex;
-    align-items: center;
-    gap: var(--sp-4);
-  }
-  .qa {
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    background: rgba(123,47,181,0.22);
-    border: 1px solid rgba(123,47,181,0.4);
-    display: grid;
-    place-items: center;
-    font-family: var(--font-display);
-    font-weight: 700;
-    font-size: 18px;
-    color: var(--brand-glow);
-    flex-shrink: 0;
-  }
-  .qm {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-  }
-  .qn {
-    font-family: var(--font-display);
-    font-weight: 600;
-    font-size: var(--step-0);
-    color: var(--paper);
-  }
-  .qr {
-    font-family: var(--font-mono);
-    font-size: var(--step--1);
-    color: var(--muted);
-  }
-
-  /* ── CTA band ── */
   .cta-band {
     background: linear-gradient(135deg, #1a0a2e 0%, #2d0f5a 50%, #1a0a2e 100%);
     border-top: 1px solid rgba(123,47,181,0.3);
@@ -657,18 +561,13 @@ const stack = [
     gap: var(--sp-7);
     flex-wrap: wrap;
   }
-  .cta-copy {
-    max-width: 54ch;
-  }
+  .cta-copy { max-width: 54ch; }
   .cta-copy h2 {
     font-size: var(--step-3);
     margin-top: var(--sp-3);
     margin-bottom: var(--sp-4);
   }
-  .cta-copy p {
-    color: var(--muted);
-    line-height: 1.7;
-  }
+  .cta-copy p { color: var(--muted); line-height: 1.7; }
   .cta-btn {
     white-space: nowrap;
     flex-shrink: 0;
@@ -676,7 +575,6 @@ const stack = [
     font-size: var(--step-1);
   }
 
-  /* ── Common ── */
   .eyebrow {
     font-family: var(--font-mono);
     font-size: var(--step--1);
@@ -705,50 +603,21 @@ const stack = [
     transform: translateY(-2px);
   }
 
-  /* ── Responsive ── */
   @media (max-width: 900px) {
-    .hero-inner {
-      grid-template-columns: 1fr;
-    }
-    .hero-art {
-      display: none;
-    }
-    .metrics-inner {
-      grid-template-columns: repeat(2, 1fr);
-    }
-    .metric {
-      border-bottom: 1px solid var(--line);
-    }
-    .metric:nth-child(2n) {
-      border-right: 0;
-    }
-    .metric:nth-last-child(-n+2) {
-      border-bottom: 0;
-    }
-    .two-col {
-      grid-template-columns: 1fr;
-      gap: var(--sp-5);
-    }
-    .col-label {
-      padding-top: 0;
-    }
-    .results-grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
-    .arch-accounts {
-      grid-template-columns: 1fr;
-    }
-    .cta-inner {
-      flex-direction: column;
-      align-items: flex-start;
-    }
+    .hero-inner { grid-template-columns: 1fr; }
+    .hero-art { display: none; }
+    .metrics-inner { grid-template-columns: repeat(2, 1fr); }
+    .metric { border-bottom: 1px solid var(--line); }
+    .metric:nth-child(2n) { border-right: 0; }
+    .metric:nth-last-child(-n+2) { border-bottom: 0; }
+    .two-col { grid-template-columns: 1fr; gap: var(--sp-5); }
+    .col-label { padding-top: 0; }
+    .results-grid { grid-template-columns: repeat(2, 1fr); }
+    .arch-grid { grid-template-columns: 1fr; }
+    .cta-inner { flex-direction: column; align-items: flex-start; }
   }
   @media (max-width: 540px) {
-    .metrics-inner {
-      grid-template-columns: repeat(2, 1fr);
-    }
-    .results-grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
+    .metrics-inner { grid-template-columns: repeat(2, 1fr); }
+    .results-grid { grid-template-columns: repeat(2, 1fr); }
   }
 </style>

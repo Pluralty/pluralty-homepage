@@ -177,6 +177,21 @@ const en: Record<string, string> = {
   // Language
   'lang.label': 'Language',
 
+  // Stabled arch caption
+  'case.stabled.arch.caption': 'Each AWS account is a blast-radius boundary — production cannot be touched by staging accidents.',
+
+  // Tradeprentice arch labels
+  'case.tradeprentice.via': 'Via',
+  'case.tradeprentice.arch.dev.note': 'Auto-deploy on push to develop',
+  'case.tradeprentice.arch.prod.note': 'Manual approval gate',
+  'case.tradeprentice.arch.caption': 'Each AWS account is a hard blast-radius boundary — dev activity cannot touch production, billing, or IAM in the prod account.',
+
+  // Muchticket arch caption
+  'case.muchticket.arch.caption': 'Prometheus pulls metrics from every node. BlackBox probes endpoints from the outside. Alerts fire before any end user notices degradation.',
+
+  // PGSA arch caption
+  'case.pgsa.arch.caption': 'All 15 desktops are domain-joined and managed centrally — no VPN, no on-site hardware, no manual patching. Each user connects from any device with their existing credentials.',
+
   // Case study — Stabled
   'case.stabled.meta.title': 'Stabled · Fintech-grade cloud infrastructure — Pluralty',
   'case.stabled.meta.desc':
@@ -195,7 +210,7 @@ const en: Record<string, string> = {
   'case.stabled.solution.p1':
     'We structured Stabled under AWS Organizations from day one, giving production its own account isolated from staging and tooling. A misconfiguration in a non-prod environment literally cannot reach production — the blast radius is bounded by the account boundary.',
   'case.stabled.solution.p2':
-    'Application workloads run on ECS Fargate behind an Application Load Balancer, letting the team ship container images without managing EC2 instances. RDS handles persistent state in a VPC subnet with no public exposure. Every resource is defined in Terraform, versioned in Git, and deployable without manual console access.',
+    'Three independent microservices — the landing page, the customer-facing web app, and the backend API — each run as a separate ECS Fargate service, scaling independently behind a unified Application Load Balancer. Aurora PostgreSQL Serverless v2 handles persistent state, automatically scaling database compute with workload demand rather than requiring manual resizing. Every resource is defined in Terraform, versioned in Git, and deployable without manual console access.',
   'case.stabled.solution.p3':
     'GitHub Actions drives CI/CD — on every push to the main branch, images are built, tested, pushed to ECR, and deployed to ECS with a zero-downtime rolling update. The pipeline also applies Terraform changes after plan approval, so infrastructure drift is caught before it reaches production.',
   'case.stabled.results.label': 'Results',
@@ -213,6 +228,133 @@ const en: Record<string, string> = {
   'case.stabled.cta.sub':
     'Whether you\'re starting fresh or modernizing an existing setup, we\'ll tell you exactly what to build and in what order.',
   'case.stabled.cta.btn': 'Get your free assessment',
+
+  // Shared case study labels
+  'case.stack.eyebrow': 'Tech stack',
+  'case.stack.title': 'Tools we used',
+  'case.pgsa.stack.title': 'Services we deployed',
+
+  // Stabled testimonial
+  'case.stabled.quote':
+    '"With Pluralty we deployed our platform\'s infrastructure in an organized way, following cloud best practices from day one. The multi-account structure gave us the confidence to ship fast without breaking things."',
+  'case.stabled.quote.name': 'Nikolaus Seiguer',
+  'case.stabled.quote.role': 'CEO, Stabled',
+
+  // Case study — Tradeprentice
+  'case.tradeprentice.meta.title': 'Tradeprentice · Multi-account AWS for SaaS — Pluralty',
+  'case.tradeprentice.meta.desc':
+    'How Pluralty built production-grade, multi-account AWS infrastructure for Tradeprentice, a live trading education SaaS platform.',
+  'case.tradeprentice.tag': 'SaaS · Trading Education',
+  'case.tradeprentice.tagline': 'Production-grade infrastructure for a live trading platform — delivered in weeks.',
+  'case.tradeprentice.challenge.label': 'The challenge',
+  'case.tradeprentice.challenge.title': 'From dev environment to production-grade platform',
+  'case.tradeprentice.challenge.p1':
+    'Tradeprentice already had a working development environment, but moving to production meant solving for real availability: multi-AZ redundancy, autoscaling during market-hour spikes, and zero-downtime deploys for a live audience of active traders.',
+  'case.tradeprentice.challenge.p2':
+    'SpinLab, the software team behind the platform, needed a cloud architecture that could grow without being redesigned — with full account isolation between dev and prod, and a CI/CD pipeline that matched their Git workflow exactly.',
+  'case.tradeprentice.solution.label': 'The solution',
+  'case.tradeprentice.solution.title': 'Multi-account AWS Organizations with full pipeline automation',
+  'case.tradeprentice.solution.p1':
+    'We structured the platform under AWS Organizations from day one, with DEV and PRD in separate accounts under a dedicated Workload OU. Each environment has its own billing boundary, IAM scope, and security perimeter — a misconfiguration in dev literally cannot reach production.',
+  'case.tradeprentice.solution.p2':
+    'Five independent containerized services run on ECS Fargate: frontend, backend API, a dedicated WebSocket server for real-time trading signals and price feeds, a backoffice portal, and a scheduled job runner — each deployed and scaled independently with zero server management. RDS PostgreSQL Multi-AZ provides automatic failover. ElastiCache Redis handles session state and query caching, keeping response times fast even during market-hour spikes.',
+  'case.tradeprentice.solution.p3':
+    'GitHub Actions drives CI/CD with OIDC — no long-lived AWS credentials anywhere in the pipeline. Every commit to develop auto-deploys to the dev environment. Production gates on manual approval. Terraform manages all infrastructure across two repositories, with remote state in S3 and DynamoDB table locking.',
+  'case.tradeprentice.results.label': 'Results',
+  'case.tradeprentice.results.title': 'Dev to production in weeks, not months',
+  'case.tradeprentice.r1.v': '100%',
+  'case.tradeprentice.r1.l': 'infrastructure as code',
+  'case.tradeprentice.r2.v': '2',
+  'case.tradeprentice.r2.l': 'fully isolated environments',
+  'case.tradeprentice.r3.v': '0',
+  'case.tradeprentice.r3.l': 'long-lived credentials',
+  'case.tradeprentice.r4.v': 'Multi-AZ',
+  'case.tradeprentice.r4.l': 'automatic DB failover',
+  'case.tradeprentice.quote':
+    '"Working with Pluralty was a turning point. They took full ownership of the cloud layer and handed us back a platform we could actually trust in production from day one."',
+  'case.tradeprentice.quote.name': 'Federico Perez',
+  'case.tradeprentice.quote.role': 'CEO, SpinLab',
+  'case.tradeprentice.cta.label': 'Building something similar?',
+  'case.tradeprentice.cta.title': 'Let\'s talk about your platform',
+  'case.tradeprentice.cta.sub':
+    'Whether you\'re starting fresh or moving an existing app to production, we\'ll design the infrastructure around your actual requirements.',
+  'case.tradeprentice.cta.btn': 'Get your free assessment',
+
+  // Case study — Muchticket
+  'case.muchticket.meta.title': 'Muchticket · Observability for high-concurrency ticketing — Pluralty',
+  'case.muchticket.meta.desc':
+    'How Pluralty built a centralized monitoring and alerting stack for Muchticket, a high-concurrency event ticketing platform serving Latin America and Europe.',
+  'case.muchticket.tag': 'Ticketing · Observability',
+  'case.muchticket.tagline': 'Full visibility across a high-concurrency ticketing platform — before any user notices a problem.',
+  'case.muchticket.challenge.label': 'The challenge',
+  'case.muchticket.challenge.title': 'Blind spots during the moments that matter most',
+  'case.muchticket.challenge.p1':
+    'Muchticket sells event tickets across Latin America and Europe, with virtual queues that must hold up when a hundred thousand fans hit "buy" at the same second. Their on-premise infrastructure had no centralized monitoring, no structured alerting, and zero visibility into server health until something broke.',
+  'case.muchticket.challenge.p2':
+    'The IT team found out about incidents through user complaints — not metrics. By then, tickets were already lost and the on-sale was already in chaos. They needed a system that detected problems before any end user noticed, and got the right people alerted in seconds, not minutes.',
+  'case.muchticket.solution.label': 'The solution',
+  'case.muchticket.solution.title': 'A centralized observability stack with instant alerting',
+  'case.muchticket.solution.p1':
+    'We deployed Prometheus as the central metrics engine, scraping every server, queue worker, and process on a fixed interval. This gives the team a continuous time-series record of the entire infrastructure. Grafana sits on top, translating raw metrics into real-time dashboards and historical trend views — a single pane of glass for the full on-premise environment.',
+  'case.muchticket.solution.p2':
+    'BlackBox Exporter probes every public HTTP endpoint from the outside, measuring uptime and response latency from the perspective that matters: the end user\'s. If a service degrades or goes down, BlackBox detects it in the next scrape cycle — before any ticket buyer notices.',
+  'case.muchticket.solution.p3':
+    'A Telegram Bot delivers structured alerts to the on-call channel in seconds. Each message includes the affected host, the metric name, the current value, and the threshold crossed — exactly the context needed to act immediately, without digging through dashboards while an on-sale burns.',
+  'case.muchticket.results.label': 'Results',
+  'case.muchticket.results.title': 'From blind to fully instrumented',
+  'case.muchticket.r1.v': '100%',
+  'case.muchticket.r1.l': 'server coverage',
+  'case.muchticket.r2.v': '<30s',
+  'case.muchticket.r2.l': 'alert delivery time',
+  'case.muchticket.r3.v': '0',
+  'case.muchticket.r3.l': 'missed incidents',
+  'case.muchticket.r4.v': '24/7',
+  'case.muchticket.r4.l': 'continuous monitoring',
+  'case.muchticket.quote':
+    '"Pluralty transformed how we operate. Before, we found out about incidents through user complaints. Now our system tells us before anyone notices. That shift alone changed everything for our on-sale events."',
+  'case.muchticket.quote.name': 'Luis María Springolo',
+  'case.muchticket.quote.role': 'IT Coordinator / SRE, Muchticket',
+  'case.muchticket.cta.label': 'Flying blind on your infrastructure?',
+  'case.muchticket.cta.title': 'Let\'s fix that — starting with a free assessment',
+  'case.muchticket.cta.sub':
+    'We\'ll map your monitoring blind spots and show you exactly what to instrument first.',
+  'case.muchticket.cta.btn': 'Get your free assessment',
+
+  // Case study — PGSA
+  'case.pgsa.meta.title': 'PGSA · AWS WorkSpaces cloud desktop migration — Pluralty',
+  'case.pgsa.meta.desc':
+    'How Pluralty migrated PGSA\'s entire workforce to cloud workstations using AWS WorkSpaces, eliminating on-premise desktop infrastructure.',
+  'case.pgsa.tag': 'Cloud Desktops · AWS WorkSpaces',
+  'case.pgsa.tagline': 'From physical desktops tied to one office to fully managed cloud workstations — accessible from anywhere.',
+  'case.pgsa.challenge.label': 'The challenge',
+  'case.pgsa.challenge.title': 'A workforce tied to physical hardware',
+  'case.pgsa.challenge.p1':
+    'PGSA\'s team depended entirely on physical desktops fixed to a single office. Remote work was simply not possible. The IT team spent significant time on hardware maintenance, Windows patching, and managing local Active Directory — operational effort with no direct business value attached.',
+  'case.pgsa.challenge.p2':
+    'As the company grew, scaling the desktop fleet meant ordering hardware, waiting for delivery, and spending hours on per-machine setup. Every new employee added cost and delay before they could start working. They needed a model where provisioning a new user was a matter of minutes, not days.',
+  'case.pgsa.solution.label': 'The solution',
+  'case.pgsa.solution.title': 'Fully managed cloud workstations on AWS WorkSpaces',
+  'case.pgsa.solution.p1':
+    'We deployed 16 Amazon WorkSpaces — each running a full Windows desktop on AWS-managed hardware, pre-loaded with a custom corporate image containing all the business software the team already used. No physical machines to buy, set up, or replace. WorkSpaces run in AUTO_STOP mode: each desktop automatically pauses when a user disconnects and resumes in seconds at next login, eliminating idle compute costs entirely.',
+  'case.pgsa.solution.p2':
+    'Identity is managed through AWS Directory Service, providing domain-joined desktops and centralized credential management using the credentials the team already knew. Every workspace is domain-joined, meaning IT can apply policies and manage access from a single control plane — without touching individual machines or visiting the office.',
+  'case.pgsa.solution.p3':
+    'AWS Backup runs daily automated snapshots with a 365-day retention policy — a full year of recovery points available at any time, without manual effort. AWS Budgets sends cost alerts before spend crosses defined thresholds, keeping cloud costs predictable. The entire environment is monitored via CloudWatch and managed through AWS Systems Manager, no VPN or on-site visits required for day-to-day administration.',
+  'case.pgsa.results.label': 'Results',
+  'case.pgsa.results.title': 'A complete office, anywhere',
+  'case.pgsa.r1.v': '16',
+  'case.pgsa.r1.l': 'cloud workstations',
+  'case.pgsa.r2.v': '100%',
+  'case.pgsa.r2.l': 'remote access enabled',
+  'case.pgsa.r3.v': '0',
+  'case.pgsa.r3.l': 'hardware to maintain',
+  'case.pgsa.r4.v': '365 days',
+  'case.pgsa.r4.l': 'automated backup retention',
+  'case.pgsa.cta.label': 'Moving your team to the cloud?',
+  'case.pgsa.cta.title': 'Let\'s design your cloud workspace',
+  'case.pgsa.cta.sub':
+    'From remote work enablement to full desktop virtualization, we\'ll build exactly what your team needs.',
+  'case.pgsa.cta.btn': 'Get your free assessment',
 };
 
 export default en;
