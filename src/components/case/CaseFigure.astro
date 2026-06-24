@@ -1,0 +1,26 @@
+---
+// Editorial figure for the architecture diagram. The diagram markup differs per
+// case, so it is passed in via the default slot; this wrapper supplies the
+// eyebrow label, the card frame, and the caption. Image-ready: a future `image`
+// prop could swap the slotted diagram for a screenshot without page changes.
+import Tr from '../Tr.astro';
+
+interface Props {
+  eyebrowKey?: string;
+  captionKey: string;
+}
+
+const { eyebrowKey = 'case.arch.eyebrow', captionKey } = Astro.props;
+---
+
+<section class="ed-figure">
+  <div class="wrap">
+    <header class="ed-figure-head" data-reveal>
+      <span class="eyebrow"><Tr k={eyebrowKey} /></span>
+    </header>
+    <figure class="arch-card" data-reveal>
+      <slot />
+      <figcaption class="arch-caption"><Tr k={captionKey} /></figcaption>
+    </figure>
+  </div>
+</section>

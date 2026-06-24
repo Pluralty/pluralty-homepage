@@ -1,0 +1,35 @@
+---
+// Tech-stack grid. `items` is an array of { label, desc } literals (per-page
+// data). `titleKey` defaults to the shared "Tools we used" label.
+import Tr from '../Tr.astro';
+
+interface StackItem {
+  label: string;
+  desc: string;
+}
+
+interface Props {
+  items: StackItem[];
+  eyebrowKey?: string;
+  titleKey?: string;
+}
+
+const { items, eyebrowKey = 'case.stack.eyebrow', titleKey = 'case.stack.title' } = Astro.props;
+---
+
+<section class="ed-stack" id="stack">
+  <div class="wrap">
+    <header class="ed-stack-head" data-reveal>
+      <span class="eyebrow"><Tr k={eyebrowKey} /></span>
+      <h2><Tr k={titleKey} /></h2>
+    </header>
+    <ul class="stack-grid">
+      {items.map((s, i) => (
+        <li class="stack-card" data-reveal style={`--reveal-delay:${i * 0.05}s`}>
+          <span class="stack-name">{s.label}</span>
+          <span class="stack-desc">{s.desc}</span>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>

@@ -1,0 +1,26 @@
+---
+// Editorial narrative section: eyebrow + large heading, then a reading-width
+// body (default slot). Set `alt` for the alternating ink-2 background.
+import Tr from '../Tr.astro';
+
+interface Props {
+  eyebrowKey: string;
+  titleKey: string;
+  alt?: boolean;
+  id?: string;
+}
+
+const { eyebrowKey, titleKey, alt = false, id } = Astro.props;
+---
+
+<section class={`ed-section${alt ? ' ed-section--alt' : ''}`} id={id}>
+  <div class="wrap">
+    <header class="ed-head" data-reveal>
+      <span class="eyebrow"><Tr k={eyebrowKey} /></span>
+      <h2><Tr k={titleKey} /></h2>
+    </header>
+    <div class="ed-body" data-reveal>
+      <slot />
+    </div>
+  </div>
+</section>

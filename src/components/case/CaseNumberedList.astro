@@ -1,0 +1,33 @@
+---
+// Editorial "solution" section: eyebrow + heading, then large numbered points.
+// `items` is an array of i18n keys (one per paragraph); numbering is automatic.
+import Tr from '../Tr.astro';
+
+interface Props {
+  eyebrowKey: string;
+  titleKey: string;
+  items: string[];
+  alt?: boolean;
+  id?: string;
+}
+
+const { eyebrowKey, titleKey, items, alt = false, id } = Astro.props;
+const pad = (n: number) => String(n + 1).padStart(2, '0');
+---
+
+<section class={`ed-section${alt ? ' ed-section--alt' : ''}`} id={id}>
+  <div class="wrap">
+    <header class="ed-head" data-reveal>
+      <span class="eyebrow"><Tr k={eyebrowKey} /></span>
+      <h2><Tr k={titleKey} /></h2>
+    </header>
+    <ol class="ed-steps">
+      {items.map((key, i) => (
+        <li class="ed-step" data-reveal style={`--reveal-delay:${i * 0.06}s`}>
+          <span class="ed-step-num" aria-hidden="true">{pad(i)}</span>
+          <p><Tr k={key} /></p>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>

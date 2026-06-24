@@ -1,0 +1,27 @@
+---
+// Closing call-to-action band.
+import Tr from '../Tr.astro';
+
+interface Props {
+  labelKey: string;
+  titleKey: string;
+  subKey: string;
+  btnKey: string;
+  href?: string;
+}
+
+const { labelKey, titleKey, subKey, btnKey, href = '/#contact' } = Astro.props;
+---
+
+<section class="ed-cta">
+  <div class="wrap ed-cta-inner" data-reveal>
+    <div class="ed-cta-copy">
+      <span class="eyebrow"><Tr k={labelKey} /></span>
+      <h2><Tr k={titleKey} /></h2>
+      <p><Tr k={subKey} /></p>
+    </div>
+    <a class="btn btn-primary ed-cta-btn" href={href}>
+      <Tr k={btnKey} />
+    </a>
+  </div>
+</section>

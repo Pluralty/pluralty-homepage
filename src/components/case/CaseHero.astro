@@ -1,0 +1,99 @@
+---
+// Editorial case hero: oversized title, tagline, meta row, and a full-width
+// feature band. The feature band is image-ready — pass `image` (a src string)
+// to show a photo; otherwise it degrades to a violet gradient with an oversized
+// watermark glyph so the empty state still looks intentional.
+import Tr from '../Tr.astro';
+
+interface Fact {
+  labelKey: string;
+  valueKey: string;
+}
+
+interface Props {
+  initial: string;
+  name: string;
+  tagKey: string;
+  taglineKey: string;
+  url?: string;
+  urlLabel?: string;
+  viaKey?: string;
+  viaName?: string;
+  viaUrl?: string;
+  badgeKey?: string;
+  image?: string;
+  facts: Fact[];
+}
+
+const {
+  initial,
+  name,
+  tagKey,
+  taglineKey,
+  url,
+  urlLabel,
+  viaKey,
+  viaName,
+  viaUrl,
+  badgeKey,
+  image,
+  facts,
+} = Astro.props;
+---
+
+<section class="ed-hero">
+  <div class="wrap">
+    <div data-reveal>
+      <span class="eyebrow ed-hero-eyebrow"><Tr k={tagKey} /></span>
+      <h1 class="ed-hero-title">{name}</h1>
+      <p class="ed-hero-tagline"><Tr k={taglineKey} /></p>
+
+      <div class="ed-hero-meta">
+        {url && (
+          <a class="ed-hero-url" href={url} target="_blank" rel="noopener">
+            {urlLabel ?? url}
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+              <path d="M14 5h5v5M19 5l-8 8M11 5H7a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-4" />
+            </svg>
+          </a>
+        )}
+        {viaKey && viaName && (
+          <span class="ed-hero-via">
+            <Tr k={viaKey} />
+            {viaUrl
+              ? <a href={viaUrl} target="_blank" rel="noopener">{viaName}</a>
+              : <span>{viaName}</span>}
+          </span>
+        )}
+        {badgeKey && (
+          <span class="ed-hero-badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+            </svg>
+            <Tr k={badgeKey} />
+          </span>
+        )}
+      </div>
+    </div>
+
+    <figure class="ed-feature" data-reveal>
+      {image ? (
+        <img class="ed-feature-img" src={image} alt={name} loading="lazy" decoding="async" />
+      ) : (
+        <div class="ed-feature-art" aria-hidden="true">
+          <span class="ed-feature-glyph">{initial}</span>
+        </div>
+      )}
+      {url && <figcaption class="ed-feature-domain">{urlLabel ?? url}</figcaption>}
+    </figure>
+
+    <dl class="ed-facts" data-reveal>
+      {facts.map((f) => (
+        <div class="ed-fact">
+          <dt class="ed-fact-label"><Tr k={f.labelKey} /></dt>
+          <dd class="ed-fact-value"><Tr k={f.valueKey} /></dd>
+        </div>
+      ))}
+    </dl>
+  </div>
+</section>

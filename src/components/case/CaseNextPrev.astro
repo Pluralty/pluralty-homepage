@@ -1,0 +1,32 @@
+---
+// Previous / next case navigation, derived from the canonical ordering in
+// src/data/cases.ts. Pass the current slug; ends render a single link.
+import Tr from '../Tr.astro';
+import { adjacentCases } from '../../data/cases';
+
+interface Props {
+  current: string;
+}
+
+const { current } = Astro.props;
+const { prev, next } = adjacentCases(current);
+---
+
+<nav class="ed-nav" aria-label="More case studies">
+  <div class="wrap ed-nav-grid">
+    {prev && (
+      <a class="ed-nav-link is-prev" href={`/cases/${prev.slug}`} data-reveal>
+        <span class="ed-nav-dir">← <Tr k="case.nav.prev" /></span>
+        <span class="ed-nav-name">{prev.name}</span>
+        <span class="ed-nav-tag"><Tr k={prev.tagKey} /></span>
+      </a>
+    )}
+    {next && (
+      <a class="ed-nav-link is-next" href={`/cases/${next.slug}`} data-reveal style={prev ? undefined : 'grid-column: 2;'}>
+        <span class="ed-nav-dir"><Tr k="case.nav.next" /> →</span>
+        <span class="ed-nav-name">{next.name}</span>
+        <span class="ed-nav-tag"><Tr k={next.tagKey} /></span>
+      </a>
+    )}
+  </div>
+</nav>

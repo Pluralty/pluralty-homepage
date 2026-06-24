@@ -1,0 +1,29 @@
+---
+// Large editorial pull-quote (replaces the bordered testimonial card).
+import Tr from '../Tr.astro';
+
+interface Props {
+  quoteKey: string;
+  nameKey: string;
+  roleKey: string;
+  initial: string;
+}
+
+const { quoteKey, nameKey, roleKey, initial } = Astro.props;
+---
+
+<section class="ed-quote">
+  <div class="wrap">
+    <figure class="ed-quote-figure" data-reveal>
+      <span class="ed-quote-mark" aria-hidden="true">&ldquo;</span>
+      <blockquote class="ed-quote-text"><Tr k={quoteKey} /></blockquote>
+      <figcaption class="ed-quote-foot">
+        <span class="ed-quote-avatar" aria-hidden="true">{initial}</span>
+        <span class="ed-quote-meta">
+          <span class="ed-quote-name"><Tr k={nameKey} /></span>
+          <span class="ed-quote-role"><Tr k={roleKey} /></span>
+        </span>
+      </figcaption>
+    </figure>
+  </div>
+</section>

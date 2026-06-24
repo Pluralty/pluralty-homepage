@@ -1,0 +1,36 @@
+---
+// Editorial results section: eyebrow + heading, then large outcome numbers.
+// `items` is an array of { vKey, lKey } i18n key pairs.
+import Tr from '../Tr.astro';
+
+interface Result {
+  vKey: string;
+  lKey: string;
+}
+
+interface Props {
+  eyebrowKey: string;
+  titleKey: string;
+  items: Result[];
+  id?: string;
+}
+
+const { eyebrowKey, titleKey, items, id = 'results' } = Astro.props;
+---
+
+<section class="ed-results" id={id}>
+  <div class="wrap">
+    <header class="ed-results-head" data-reveal>
+      <span class="eyebrow"><Tr k={eyebrowKey} /></span>
+      <h2><Tr k={titleKey} /></h2>
+    </header>
+    <div class="ed-results-grid">
+      {items.map((r, i) => (
+        <div class="ed-result" data-reveal style={`--reveal-delay:${i * 0.05}s`}>
+          <span class="ed-result-v"><Tr k={r.vKey} /></span>
+          <span class="ed-result-l"><Tr k={r.lKey} /></span>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

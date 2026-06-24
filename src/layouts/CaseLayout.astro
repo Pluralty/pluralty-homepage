@@ -3,6 +3,7 @@ import Base from './Base.astro';
 import logo from '../assets/isologotipo-blanco.webp';
 import LangToggle from '../components/LangToggle.astro';
 import Tr from '../components/Tr.astro';
+import '../styles/case.css';
 
 interface Props {
   title?: string;
@@ -27,7 +28,7 @@ const { title, description } = Astro.props;
     </div>
   </header>
 
-  <main id="main" class="case-main">
+  <main id="main" class="case-main case">
     <slot />
   </main>
 

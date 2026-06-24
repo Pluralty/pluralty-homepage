@@ -355,6 +355,41 @@ const en: Record<string, string> = {
   'case.pgsa.cta.sub':
     'From remote work enablement to full desktop virtualization, we\'ll build exactly what your team needs.',
   'case.pgsa.cta.btn': 'Get your free assessment',
+
+  // ── Editorial layout — shared labels ──
+  'case.arch.eyebrow': 'Architecture',
+  'case.facts.client': 'Client',
+  'case.facts.industry': 'Industry',
+  'case.facts.services': 'Services',
+  'case.facts.platforms': 'Platforms',
+  'case.nav.eyebrow': 'More work',
+  'case.nav.prev': 'Previous case',
+  'case.nav.next': 'Next case',
+  'case.pgsa.badge': 'No public website · Privacy protected',
+
+  // ── Project facts — Stabled ──
+  'case.stabled.facts.client': 'Stabled',
+  'case.stabled.facts.industry': 'Fintech · Cross-border payments',
+  'case.stabled.facts.services': 'Cloud architecture · DevOps · IaC',
+  'case.stabled.facts.platforms': 'AWS Organizations · ECS Fargate · Aurora Serverless v2',
+
+  // ── Project facts — Tradeprentice ──
+  'case.tradeprentice.facts.client': 'SpinLab',
+  'case.tradeprentice.facts.industry': 'SaaS · Trading education',
+  'case.tradeprentice.facts.services': 'Cloud architecture · DevOps · CI/CD',
+  'case.tradeprentice.facts.platforms': 'AWS Organizations · ECS Fargate · RDS Multi-AZ',
+
+  // ── Project facts — Muchticket ──
+  'case.muchticket.facts.client': 'Muchticket',
+  'case.muchticket.facts.industry': 'Ticketing · High concurrency',
+  'case.muchticket.facts.services': 'Observability · SRE · Alerting',
+  'case.muchticket.facts.platforms': 'Prometheus · Grafana · BlackBox · Telegram',
+
+  // ── Project facts — PGSA ──
+  'case.pgsa.facts.client': 'PGSA (private client)',
+  'case.pgsa.facts.industry': 'Cloud desktops',
+  'case.pgsa.facts.services': 'Migration · Managed workspaces',
+  'case.pgsa.facts.platforms': 'AWS WorkSpaces · Directory Service · AWS Backup',
 };
 
 export default en;

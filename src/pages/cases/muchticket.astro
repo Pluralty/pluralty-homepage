@@ -1,7 +1,16 @@
 ---
 import CaseLayout from '../../layouts/CaseLayout.astro';
-import Tr from '../../components/Tr.astro';
 import { t } from '../../i18n';
+import CaseHero from '../../components/case/CaseHero.astro';
+import CaseSection from '../../components/case/CaseSection.astro';
+import CaseNumberedList from '../../components/case/CaseNumberedList.astro';
+import CaseFigure from '../../components/case/CaseFigure.astro';
+import CaseStack from '../../components/case/CaseStack.astro';
+import CaseResults from '../../components/case/CaseResults.astro';
+import CasePullQuote from '../../components/case/CasePullQuote.astro';
+import CaseNextPrev from '../../components/case/CaseNextPrev.astro';
+import CaseCta from '../../components/case/CaseCta.astro';
+import Tr from '../../components/Tr.astro';
 
 const stack = [
   { label: 'Prometheus', desc: 'Time-series metrics engine' },
@@ -11,742 +20,115 @@ const stack = [
   { label: 'Node Exporter', desc: 'Server-level OS metrics' },
   { label: 'Alertmanager', desc: 'Alert routing & deduplication' },
 ];
+
+const facts = [
+  { labelKey: 'case.facts.client', valueKey: 'case.muchticket.facts.client' },
+  { labelKey: 'case.facts.industry', valueKey: 'case.muchticket.facts.industry' },
+  { labelKey: 'case.facts.services', valueKey: 'case.muchticket.facts.services' },
+  { labelKey: 'case.facts.platforms', valueKey: 'case.muchticket.facts.platforms' },
+];
+
+const metrics = [
+  { vKey: 'case.muchticket.r1.v', lKey: 'case.muchticket.r1.l' },
+  { vKey: 'case.muchticket.r2.v', lKey: 'case.muchticket.r2.l' },
+  { vKey: 'case.muchticket.r3.v', lKey: 'case.muchticket.r3.l' },
+  { vKey: 'case.muchticket.r4.v', lKey: 'case.muchticket.r4.l' },
+];
 ---
 
 <CaseLayout
   title={t('case.muchticket.meta.title')}
   description={t('case.muchticket.meta.desc')}
 >
+  <CaseHero
+    initial="M"
+    name="Muchticket"
+    tagKey="case.muchticket.tag"
+    taglineKey="case.muchticket.tagline"
+    url="https://www.muchticket.com"
+    urlLabel="muchticket.com"
+    facts={facts}
+  />
 
-  <!-- ─── Hero ──────────────────────────────────────────────────── -->
-  <section class="hero">
-    <div class="wrap hero-inner">
-      <div class="hero-copy" data-reveal>
-        <div class="hero-meta">
-          <span class="hero-logo">M</span>
-          <span class="hero-tag"><Tr k="case.muchticket.tag" /></span>
+  <CaseSection eyebrowKey="case.muchticket.challenge.label" titleKey="case.muchticket.challenge.title" id="challenge">
+    <p><Tr k="case.muchticket.challenge.p1" /></p>
+    <p><Tr k="case.muchticket.challenge.p2" /></p>
+  </CaseSection>
+
+  <CaseNumberedList
+    eyebrowKey="case.muchticket.solution.label"
+    titleKey="case.muchticket.solution.title"
+    id="solution"
+    alt
+    items={[
+      'case.muchticket.solution.p1',
+      'case.muchticket.solution.p2',
+      'case.muchticket.solution.p3',
+    ]}
+  />
+
+  <CaseFigure captionKey="case.muchticket.arch.caption">
+    <div class="arch-row">
+      <div class="arch-box infra-box">
+        <span class="arch-label">On-Premise Infrastructure</span>
+        <div class="arch-servers">
+          <div class="arch-server"><span class="svc">Web Server</span></div>
+          <div class="arch-server"><span class="svc">Queue Worker</span></div>
+          <div class="arch-server"><span class="svc">DB Server</span></div>
+          <div class="arch-server"><span class="svc">App Server N</span></div>
         </div>
-        <h1>Muchticket</h1>
-        <p class="hero-tagline"><Tr k="case.muchticket.tagline" /></p>
-        <a class="hero-url" href="https://www.muchticket.com" target="_blank" rel="noopener">
-          muchticket.com
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
-            <path d="M14 5h5v5M19 5l-8 8M11 5H7a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-4"/>
-          </svg>
-        </a>
-      </div>
-      <div class="hero-art" aria-hidden="true" data-reveal>
-        <div class="big-logo">M</div>
-        <div class="glow-ring"></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ─── Metrics strip ─────────────────────────────────────────── -->
-  <div class="metrics-band">
-    <div class="wrap metrics-inner">
-      <div class="metric" data-reveal>
-        <span class="mv"><Tr k="case.muchticket.r1.v" /></span>
-        <span class="ml"><Tr k="case.muchticket.r1.l" /></span>
-      </div>
-      <div class="metric" data-reveal>
-        <span class="mv"><Tr k="case.muchticket.r2.v" /></span>
-        <span class="ml"><Tr k="case.muchticket.r2.l" /></span>
-      </div>
-      <div class="metric" data-reveal>
-        <span class="mv"><Tr k="case.muchticket.r3.v" /></span>
-        <span class="ml"><Tr k="case.muchticket.r3.l" /></span>
-      </div>
-      <div class="metric" data-reveal>
-        <span class="mv"><Tr k="case.muchticket.r4.v" /></span>
-        <span class="ml"><Tr k="case.muchticket.r4.l" /></span>
-      </div>
-    </div>
-  </div>
-
-  <!-- ─── Challenge ─────────────────────────────────────────────── -->
-  <section class="section" id="challenge">
-    <div class="wrap two-col">
-      <div class="col-label" data-reveal>
-        <span class="eyebrow"><Tr k="case.muchticket.challenge.label" /></span>
-      </div>
-      <div class="col-content" data-reveal>
-        <h2><Tr k="case.muchticket.challenge.title" /></h2>
-        <p><Tr k="case.muchticket.challenge.p1" /></p>
-        <p><Tr k="case.muchticket.challenge.p2" /></p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ─── Solution ──────────────────────────────────────────────── -->
-  <section class="section alt" id="solution">
-    <div class="wrap two-col">
-      <div class="col-label" data-reveal>
-        <span class="eyebrow"><Tr k="case.muchticket.solution.label" /></span>
-      </div>
-      <div class="col-content" data-reveal>
-        <h2><Tr k="case.muchticket.solution.title" /></h2>
-        <div class="solution-step">
-          <span class="step-num">01</span>
-          <p><Tr k="case.muchticket.solution.p1" /></p>
+        <div class="arch-arrow-row">
+          <span class="arch-arrow-line"></span>
+          <span class="arch-arrow-label">metrics scrape (pull)</span>
+          <span class="arch-arrow-line"></span>
         </div>
-        <div class="solution-step">
-          <span class="step-num">02</span>
-          <p><Tr k="case.muchticket.solution.p2" /></p>
-        </div>
-        <div class="solution-step">
-          <span class="step-num">03</span>
-          <p><Tr k="case.muchticket.solution.p3" /></p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ─── Architecture diagram ─────────────────────────────────── -->
-  <section class="section arch-section">
-    <div class="wrap">
-      <div class="arch-card" data-reveal>
-        <div class="arch-row">
-          <div class="arch-box infra-box">
-            <span class="arch-label">On-Premise Infrastructure</span>
-            <div class="arch-servers">
-              <div class="arch-server">
-                <span class="svc">Web Server</span>
-              </div>
-              <div class="arch-server">
-                <span class="svc">Queue Worker</span>
-              </div>
-              <div class="arch-server">
-                <span class="svc">DB Server</span>
-              </div>
-              <div class="arch-server">
-                <span class="svc">App Server N</span>
-              </div>
+        <div class="arch-obs-stack">
+          <div class="arch-obs-center">
+            <div class="obs-prom">
+              <span class="obs-name">Prometheus</span>
+              <span class="obs-desc">Time-series storage & alerting</span>
             </div>
-            <div class="arch-arrow-row">
-              <span class="arch-arrow-line"></span>
-              <span class="arch-arrow-label">metrics scrape (pull)</span>
-              <span class="arch-arrow-line"></span>
+          </div>
+          <div class="arch-obs-outputs">
+            <div class="obs-output">
+              <span class="svc svc-grafana">Grafana</span>
+              <span class="obs-sub">Dashboards & trends</span>
             </div>
-            <div class="arch-obs-stack">
-              <div class="arch-obs-center">
-                <div class="obs-prom">
-                  <span class="obs-name">Prometheus</span>
-                  <span class="obs-desc">Time-series storage & alerting</span>
-                </div>
-              </div>
-              <div class="arch-obs-outputs">
-                <div class="obs-output">
-                  <span class="svc svc-grafana">Grafana</span>
-                  <span class="obs-sub">Dashboards & trends</span>
-                </div>
-                <div class="obs-output">
-                  <span class="svc svc-blackbox">BlackBox Exporter</span>
-                  <span class="obs-sub">HTTP endpoint probing</span>
-                </div>
-                <div class="obs-output">
-                  <span class="svc svc-telegram">Telegram Bot</span>
-                  <span class="obs-sub">On-call alerts in seconds</span>
-                </div>
-              </div>
+            <div class="obs-output">
+              <span class="svc svc-blackbox">BlackBox Exporter</span>
+              <span class="obs-sub">HTTP endpoint probing</span>
+            </div>
+            <div class="obs-output">
+              <span class="svc svc-telegram">Telegram Bot</span>
+              <span class="obs-sub">On-call alerts in seconds</span>
             </div>
           </div>
         </div>
-        <p class="arch-caption"><Tr k="case.muchticket.arch.caption" /></p>
       </div>
     </div>
-  </section>
+  </CaseFigure>
 
-  <!-- ─── Stack ─────────────────────────────────────────────────── -->
-  <section class="section" id="stack">
-    <div class="wrap">
-      <header class="stack-head" data-reveal>
-        <span class="eyebrow"><Tr k="case.stack.eyebrow" /></span>
-        <h2><Tr k="case.stack.title" /></h2>
-      </header>
-      <ul class="stack-grid">
-        {stack.map((s, i) => (
-          <li class="stack-card" data-reveal style={`--reveal-delay:${i * 0.05}s`}>
-            <span class="stack-name">{s.label}</span>
-            <span class="stack-desc">{s.desc}</span>
-          </li>
-        ))}
-      </ul>
-    </div>
-  </section>
+  <CaseStack items={stack} />
 
-  <!-- ─── Testimonial ────────────────────────────────────────────── -->
-  <section class="section alt quote-section">
-    <div class="wrap">
-      <blockquote class="quote-card" data-reveal>
-        <p class="qt"><Tr k="case.muchticket.quote" /></p>
-        <footer class="qf">
-          <div class="qa">L</div>
-          <div class="qm">
-            <span class="qn"><Tr k="case.muchticket.quote.name" /></span>
-            <span class="qr"><Tr k="case.muchticket.quote.role" /></span>
-          </div>
-        </footer>
-      </blockquote>
-    </div>
-  </section>
+  <CaseResults
+    eyebrowKey="case.muchticket.results.label"
+    titleKey="case.muchticket.results.title"
+    items={metrics}
+  />
 
-  <!-- ─── Results ───────────────────────────────────────────────── -->
-  <section class="section" id="results">
-    <div class="wrap">
-      <header class="results-head" data-reveal>
-        <span class="eyebrow"><Tr k="case.muchticket.results.label" /></span>
-        <h2><Tr k="case.muchticket.results.title" /></h2>
-      </header>
-      <div class="results-grid">
-        <div class="result-card" data-reveal>
-          <span class="rv"><Tr k="case.muchticket.r1.v" /></span>
-          <span class="rl"><Tr k="case.muchticket.r1.l" /></span>
-        </div>
-        <div class="result-card" data-reveal>
-          <span class="rv"><Tr k="case.muchticket.r2.v" /></span>
-          <span class="rl"><Tr k="case.muchticket.r2.l" /></span>
-        </div>
-        <div class="result-card" data-reveal>
-          <span class="rv"><Tr k="case.muchticket.r3.v" /></span>
-          <span class="rl"><Tr k="case.muchticket.r3.l" /></span>
-        </div>
-        <div class="result-card" data-reveal>
-          <span class="rv"><Tr k="case.muchticket.r4.v" /></span>
-          <span class="rl"><Tr k="case.muchticket.r4.l" /></span>
-        </div>
-      </div>
-    </div>
-  </section>
+  <CasePullQuote
+    quoteKey="case.muchticket.quote"
+    nameKey="case.muchticket.quote.name"
+    roleKey="case.muchticket.quote.role"
+    initial="L"
+  />
 
-  <!-- ─── CTA ───────────────────────────────────────────────────── -->
-  <section class="cta-band">
-    <div class="wrap cta-inner" data-reveal>
-      <div class="cta-copy">
-        <span class="eyebrow"><Tr k="case.muchticket.cta.label" /></span>
-        <h2><Tr k="case.muchticket.cta.title" /></h2>
-        <p><Tr k="case.muchticket.cta.sub" /></p>
-      </div>
-      <a class="btn btn-primary cta-btn" href="/#contact">
-        <Tr k="case.muchticket.cta.btn" />
-      </a>
-    </div>
-  </section>
+  <CaseNextPrev current="muchticket" />
 
+  <CaseCta
+    labelKey="case.muchticket.cta.label"
+    titleKey="case.muchticket.cta.title"
+    subKey="case.muchticket.cta.sub"
+    btnKey="case.muchticket.cta.btn"
+  />
 </CaseLayout>
-
-<style>
-  .wrap {
-    width: min(100% - 2 * var(--sp-5), var(--content));
-    margin-inline: auto;
-  }
-  .hero {
-    background: var(--ink);
-    padding-block: clamp(80px, 16vh, 140px) clamp(60px, 10vh, 100px);
-    position: relative;
-    overflow: hidden;
-  }
-  .hero::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(ellipse 70% 60% at 80% 40%, rgba(123,47,181,0.22) 0%, transparent 70%);
-    pointer-events: none;
-  }
-  .hero-inner {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    gap: var(--sp-8);
-    align-items: center;
-  }
-  .hero-meta {
-    display: flex;
-    align-items: center;
-    gap: var(--sp-4);
-    margin-bottom: var(--sp-5);
-  }
-  .hero-logo {
-    width: 48px;
-    height: 48px;
-    border-radius: 12px;
-    background: rgba(123,47,181,0.22);
-    border: 1px solid rgba(123,47,181,0.4);
-    display: grid;
-    place-items: center;
-    font-family: var(--font-display);
-    font-weight: 700;
-    font-size: 20px;
-    color: #9d5fd6;
-    flex-shrink: 0;
-  }
-  .hero-tag {
-    font-family: var(--font-mono);
-    font-size: var(--step--1);
-    color: var(--brand-glow);
-    letter-spacing: 0.06em;
-  }
-  .hero-copy h1 {
-    font-family: var(--font-display);
-    font-size: clamp(3rem, 8vw, 6rem);
-    font-weight: 800;
-    line-height: 0.95;
-    letter-spacing: -0.03em;
-    color: var(--paper);
-  }
-  .hero-tagline {
-    margin-top: var(--sp-5);
-    font-size: var(--step-1);
-    color: var(--muted);
-    max-width: 48ch;
-    line-height: 1.6;
-  }
-  .hero-url {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    margin-top: var(--sp-5);
-    font-family: var(--font-mono);
-    font-size: var(--step--1);
-    color: var(--brand-glow);
-    border: 1px solid rgba(157,95,214,0.3);
-    padding: 6px 14px;
-    border-radius: var(--r-pill);
-    transition: background 0.2s, border-color 0.2s;
-  }
-  .hero-url:hover {
-    background: rgba(157,95,214,0.08);
-    border-color: rgba(157,95,214,0.6);
-  }
-  .hero-art {
-    position: relative;
-    width: 200px;
-    height: 200px;
-    flex-shrink: 0;
-  }
-  .big-logo {
-    width: 100%;
-    height: 100%;
-    border-radius: 36px;
-    background: rgba(123,47,181,0.18);
-    border: 1px solid rgba(123,47,181,0.35);
-    display: grid;
-    place-items: center;
-    font-family: var(--font-display);
-    font-weight: 800;
-    font-size: 96px;
-    color: #7b2fb5;
-    position: relative;
-    z-index: 1;
-  }
-  .glow-ring {
-    position: absolute;
-    inset: -24px;
-    border-radius: 52px;
-    border: 1px solid rgba(123,47,181,0.15);
-    pointer-events: none;
-  }
-  .metrics-band {
-    border-block: 1px solid var(--line);
-    background: var(--ink-2);
-  }
-  .metrics-inner {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 0;
-  }
-  .metric {
-    display: flex;
-    flex-direction: column;
-    gap: var(--sp-1);
-    padding: var(--sp-7) var(--sp-6);
-    border-right: 1px solid var(--line);
-  }
-  .metric:last-child { border-right: 0; }
-  .mv {
-    font-family: var(--font-display);
-    font-weight: 700;
-    font-size: var(--step-3);
-    color: var(--brand-glow);
-    letter-spacing: -0.02em;
-  }
-  .ml {
-    font-family: var(--font-mono);
-    font-size: var(--step--1);
-    color: var(--muted);
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-  }
-  .section {
-    padding-block: var(--section-y);
-    background: var(--ink);
-  }
-  .section.alt { background: var(--ink-2); }
-  .two-col {
-    display: grid;
-    grid-template-columns: 220px 1fr;
-    gap: var(--sp-8);
-    align-items: start;
-  }
-  .col-label { padding-top: 6px; }
-  .col-content h2 {
-    font-size: var(--step-3);
-    margin-bottom: var(--sp-6);
-  }
-  .col-content p {
-    color: var(--muted);
-    line-height: 1.75;
-    max-width: 68ch;
-    margin-bottom: var(--sp-5);
-  }
-  .col-content p:last-child { margin-bottom: 0; }
-  .solution-step {
-    display: grid;
-    grid-template-columns: 40px 1fr;
-    gap: var(--sp-4);
-    margin-bottom: var(--sp-6);
-    align-items: start;
-  }
-  .solution-step:last-child { margin-bottom: 0; }
-  .step-num {
-    font-family: var(--font-mono);
-    font-size: var(--step--1);
-    color: var(--brand-glow);
-    padding-top: 4px;
-    letter-spacing: 0.04em;
-  }
-  .solution-step p { margin-bottom: 0; }
-
-  /* ── Architecture ── */
-  .arch-section { border-block: 1px solid var(--line); }
-  .arch-card {
-    background: var(--surface);
-    border: 1px solid var(--line);
-    border-radius: var(--r-card);
-    padding: var(--sp-7);
-    overflow-x: auto;
-  }
-  .arch-row { min-width: 580px; }
-  .infra-box {
-    border: 1px dashed rgba(123,47,181,0.4);
-    border-radius: 12px;
-    padding: var(--sp-5);
-  }
-  .arch-label {
-    font-family: var(--font-mono);
-    font-size: var(--step--1);
-    color: var(--brand-glow);
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    display: block;
-    margin-bottom: var(--sp-4);
-  }
-  .arch-servers {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--sp-3);
-    margin-bottom: var(--sp-4);
-  }
-  .arch-server {
-    background: var(--ink);
-    border: 1px solid var(--line-strong);
-    border-radius: 8px;
-    padding: var(--sp-3) var(--sp-4);
-  }
-  .arch-arrow-row {
-    display: flex;
-    align-items: center;
-    gap: var(--sp-3);
-    margin-bottom: var(--sp-4);
-  }
-  .arch-arrow-line {
-    flex: 1;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(123,47,181,0.5), transparent);
-  }
-  .arch-arrow-label {
-    font-family: var(--font-mono);
-    font-size: 11px;
-    color: var(--muted);
-    white-space: nowrap;
-  }
-  .arch-obs-stack {
-    display: flex;
-    flex-direction: column;
-    gap: var(--sp-4);
-  }
-  .arch-obs-center {
-    display: flex;
-    justify-content: center;
-  }
-  .obs-prom {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-    background: rgba(123,47,181,0.1);
-    border: 1px solid rgba(123,47,181,0.4);
-    border-radius: 10px;
-    padding: var(--sp-4) var(--sp-6);
-    text-align: center;
-  }
-  .obs-name {
-    font-family: var(--font-display);
-    font-weight: 700;
-    font-size: var(--step-0);
-    color: var(--paper);
-  }
-  .obs-desc {
-    font-family: var(--font-mono);
-    font-size: 11px;
-    color: var(--muted);
-  }
-  .arch-obs-outputs {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: var(--sp-4);
-  }
-  .obs-output {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: var(--sp-2);
-    background: var(--ink);
-    border: 1px solid var(--line-strong);
-    border-radius: 10px;
-    padding: var(--sp-4);
-    text-align: center;
-  }
-  .obs-sub {
-    font-family: var(--font-mono);
-    font-size: 11px;
-    color: var(--muted);
-  }
-  .svc {
-    font-family: var(--font-mono);
-    font-size: 11px;
-    padding: 4px 8px;
-    border: 1px solid var(--line-strong);
-    border-radius: var(--r-pill);
-    color: var(--paper);
-    background: rgba(123,47,181,0.08);
-  }
-  .svc-grafana {
-    background: rgba(240,127,0,0.1);
-    border-color: rgba(240,127,0,0.35);
-    color: #f97316;
-  }
-  .svc-blackbox {
-    background: rgba(59,130,246,0.1);
-    border-color: rgba(59,130,246,0.3);
-    color: #60a5fa;
-  }
-  .svc-telegram {
-    background: rgba(0,136,204,0.1);
-    border-color: rgba(0,136,204,0.3);
-    color: #38bdf8;
-  }
-  .arch-caption {
-    margin-top: var(--sp-5);
-    font-size: var(--step--1);
-    color: var(--muted);
-    font-style: italic;
-    padding-top: var(--sp-4);
-    border-top: 1px solid var(--line);
-  }
-
-  .stack-head { margin-bottom: var(--sp-7); }
-  .stack-head h2 {
-    font-size: var(--step-3);
-    margin-top: var(--sp-3);
-  }
-  .stack-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-    gap: var(--sp-3);
-  }
-  .stack-card {
-    background: var(--surface);
-    border: 1px solid var(--line);
-    border-radius: var(--r-card);
-    padding: var(--sp-5);
-    display: flex;
-    flex-direction: column;
-    gap: var(--sp-2);
-    transition: border-color 0.2s, transform var(--dur) var(--ease);
-  }
-  .stack-card:hover {
-    border-color: var(--line-strong);
-    transform: translateY(-2px);
-  }
-  .stack-name {
-    font-family: var(--font-display);
-    font-weight: 600;
-    font-size: var(--step-0);
-    color: var(--paper);
-  }
-  .stack-desc {
-    font-size: var(--step--1);
-    color: var(--muted);
-    font-family: var(--font-mono);
-  }
-
-  .quote-section { background: var(--ink-2); }
-  .quote-card {
-    max-width: 780px;
-    margin: 0 auto;
-    padding: var(--sp-8) var(--sp-7);
-    background: var(--surface);
-    border: 1px solid var(--line);
-    border-left: 4px solid var(--brand);
-    border-radius: var(--r-card);
-  }
-  .qt {
-    font-size: var(--step-1);
-    color: var(--paper);
-    line-height: 1.7;
-    font-style: italic;
-    margin-bottom: var(--sp-6);
-  }
-  .qf {
-    display: flex;
-    align-items: center;
-    gap: var(--sp-4);
-  }
-  .qa {
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    background: rgba(123,47,181,0.22);
-    border: 1px solid rgba(123,47,181,0.4);
-    display: grid;
-    place-items: center;
-    font-family: var(--font-display);
-    font-weight: 700;
-    font-size: 18px;
-    color: var(--brand-glow);
-    flex-shrink: 0;
-  }
-  .qm { display: flex; flex-direction: column; gap: 2px; }
-  .qn {
-    font-family: var(--font-display);
-    font-weight: 600;
-    font-size: var(--step-0);
-    color: var(--paper);
-  }
-  .qr {
-    font-family: var(--font-mono);
-    font-size: var(--step--1);
-    color: var(--muted);
-  }
-
-  .results-head { margin-bottom: var(--sp-7); }
-  .results-head h2 {
-    font-size: var(--step-3);
-    margin-top: var(--sp-3);
-  }
-  .results-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: var(--sp-4);
-  }
-  .result-card {
-    background: var(--surface);
-    border: 1px solid var(--line);
-    border-radius: var(--r-card);
-    padding: var(--sp-6);
-    display: flex;
-    flex-direction: column;
-    gap: var(--sp-2);
-    transition: border-color 0.2s;
-  }
-  .result-card:hover { border-color: rgba(123,47,181,0.5); }
-  .rv {
-    font-family: var(--font-display);
-    font-weight: 700;
-    font-size: var(--step-4);
-    color: var(--brand-glow);
-    letter-spacing: -0.02em;
-    line-height: 1;
-  }
-  .rl {
-    font-family: var(--font-mono);
-    font-size: var(--step--1);
-    color: var(--muted);
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    line-height: 1.4;
-  }
-
-  .cta-band {
-    background: linear-gradient(135deg, #1a0a2e 0%, #2d0f5a 50%, #1a0a2e 100%);
-    border-top: 1px solid rgba(123,47,181,0.3);
-    border-bottom: 1px solid rgba(123,47,181,0.3);
-    padding-block: var(--sp-9);
-  }
-  .cta-inner {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: var(--sp-7);
-    flex-wrap: wrap;
-  }
-  .cta-copy { max-width: 54ch; }
-  .cta-copy h2 {
-    font-size: var(--step-3);
-    margin-top: var(--sp-3);
-    margin-bottom: var(--sp-4);
-  }
-  .cta-copy p { color: var(--muted); line-height: 1.7; }
-  .cta-btn {
-    white-space: nowrap;
-    flex-shrink: 0;
-    padding: 14px 28px;
-    font-size: var(--step-1);
-  }
-
-  .eyebrow {
-    font-family: var(--font-mono);
-    font-size: var(--step--1);
-    text-transform: uppercase;
-    letter-spacing: 0.14em;
-    color: var(--brand-glow);
-    display: block;
-  }
-  .btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    font-family: var(--font-display);
-    font-weight: 700;
-    border-radius: var(--r-pill);
-    transition: background 0.2s, transform 0.2s;
-    text-decoration: none;
-  }
-  .btn-primary {
-    background: var(--brand);
-    color: var(--paper);
-    padding: 12px 24px;
-  }
-  .btn-primary:hover {
-    background: var(--brand-lift);
-    transform: translateY(-2px);
-  }
-
-  @media (max-width: 900px) {
-    .hero-inner { grid-template-columns: 1fr; }
-    .hero-art { display: none; }
-    .metrics-inner { grid-template-columns: repeat(2, 1fr); }
-    .metric { border-bottom: 1px solid var(--line); }
-    .metric:nth-child(2n) { border-right: 0; }
-    .metric:nth-last-child(-n+2) { border-bottom: 0; }
-    .two-col { grid-template-columns: 1fr; gap: var(--sp-5); }
-    .col-label { padding-top: 0; }
-    .results-grid { grid-template-columns: repeat(2, 1fr); }
-    .arch-obs-outputs { grid-template-columns: 1fr; }
-    .cta-inner { flex-direction: column; align-items: flex-start; }
-  }
-  @media (max-width: 540px) {
-    .metrics-inner { grid-template-columns: repeat(2, 1fr); }
-    .results-grid { grid-template-columns: repeat(2, 1fr); }
-    .quote-card { padding: var(--sp-6) var(--sp-5); }
-  }
-</style>
